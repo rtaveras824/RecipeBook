@@ -12,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         
         Users.hasMany(models.RecipeBook);
+        Users.hasMany(models.Recipe, {as:"UserRecipes"});
+        Users.belongsToMany(models.Recipe, {as:"FavoriteRecipies", through:"UserFavoriteRecipe"})
+        Users.belongsToMany(models.Users, {as:"Follower", through:"UserFollower"})
+
       }
     }
   });

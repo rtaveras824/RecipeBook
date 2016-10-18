@@ -14,6 +14,9 @@ module.exports = {
       private: {
         type: Sequelize.BOOLEAN
       },
+      price:{
+        type: Sequelize.FLOAT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
