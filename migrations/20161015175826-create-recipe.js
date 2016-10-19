@@ -11,11 +11,24 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+
+      description:{
+        type: Sequelize.TEXT
+      },
+      image:{
+        type: Sequelize.STRING
+      },
       ingredients: {
         type: Sequelize.JSON
       },
       steps: {
         type: Sequelize.JSON
+      },
+      private:{
+        type: Sequelize.BOOLEAN
+      },
+      price:{
+        type: Sequelize.FLOAT
       },
       createdAt: {
         allowNull: false,
