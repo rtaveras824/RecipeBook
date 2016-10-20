@@ -30,7 +30,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', application_controller);
+app.use('/recipes', recipes_controller);
+app.use('/users', users_controller);
 
 var sequelize = require("sequelize");
 var models = require("./models");
