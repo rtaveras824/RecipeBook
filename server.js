@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var methodOverride = require('method-override');
 
+
 var application_controller = require('./controllers/application_controller.js');
 var recipes_controller = require('./controllers/recipies_controller.js');
 var search_controller = require('./controllers/search_controller.js');
@@ -31,7 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', application_controller);
-// app.use('/recipes', recipes_controller);
+app.use('/search', search_controller);
 
 var sequelize = require("sequelize");
 var models = require("./models");
