@@ -32,5 +32,16 @@
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",
     "sequelize": "^3.24.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "imagemin-pngcrush": "^5.0.0"
   }
 }

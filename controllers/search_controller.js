@@ -1,9 +1,9 @@
-var models = require('../models');
-var express = require('express');
-var router = express.Router();
-var path = require('path');
-var sequelize = require('sequelize');
-var sequelizeConnection = models.sequelize;
+var models = require('../models'),
+	express = require('express'),
+	router = express.Router(),
+	path = require('path'),
+	sequelize = require('sequelize'),
+	sequelizeConnection = models.sequelize;
 
 
 //This is just a testing page with a simple form
@@ -24,7 +24,7 @@ router.get('/results', function(req, res) {
 	//SQL_CALC_FOUND_ROWS is to count the total number of rows found because
 	//LIMIT prevents getting total rows
 	//SELECT FOUND_ROWS() needs to be called after to get row count
-	queryString = 'SELECT SQL_CALC_FOUND_ROWS * FROM recipes WHERE ';
+	var queryString = 'SELECT SQL_CALC_FOUND_ROWS * FROM recipes WHERE ';
 	separatedSearchWords.forEach(function(word, index) {
 		if (index !== 0) {
 			queryString += 'AND ';
