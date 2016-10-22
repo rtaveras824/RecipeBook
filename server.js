@@ -11,7 +11,7 @@ var methodOverride = require('method-override');
 var application_controller = require('./controllers/application_controller.js');
 var recipes_controller = require('./controllers/recipe_controller.js');
 var search_controller = require('./controllers/search_controller.js');
-// var users_controller = require('./controllers/users_controller.js');
+var users_controller = require('./controllers/users_controller.js');
 
 var app = express();
 
@@ -25,14 +25,17 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+app.use(session({ secret: 'no keyboard cat', cookie: { maxAge: 60000 }}));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', application_controller);
 app.use('/search', search_controller);
+app.use('/user', users_controller);
+app.use('/recipe', recipes_controller);
 
 var sequelize = require("sequelize");
 var models = require("./models");
