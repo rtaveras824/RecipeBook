@@ -5,7 +5,9 @@ var router  = express.Router();
 
 
 router.get('/', function (req, res){
-	res.render('index', { title: results.handlebars });
+	res.render('index', { 
+		title: 'Main'
+	});
 });
 
 module.exports = router;
