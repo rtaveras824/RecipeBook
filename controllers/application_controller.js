@@ -1,21 +1,19 @@
 //require models and express
-var models  = require('../models');
-var express = require('express');
-var router  = express.Router();
-
+var models  = require('../models'),
+	path = require('path'),
+	express = require('express'),
+	router  = express.Router();
 
 router.get('/', function (req, res){
 	var button = '';
-	var user_id = req.session.user_id || null;
 	if (req.session.user_id) {
-		console.log("OKSDFJOSDFIJ");
+		res.render('index', { 
+			title: 'Main',
+			ogtitle: 'GET BACK TO WORK'
+		});
 	} else {
-		console.log("Nope");
+		res.sendFile(path.join(__dirname + '/../public/landing-page.html'));
 	}
-	res.render('index', { 
-		title: 'Main',
-		ogtitle: 'GET BACK TO WORK'
-	});
 });
 
 module.exports = router;

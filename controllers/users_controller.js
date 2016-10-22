@@ -1,9 +1,9 @@
 //require bcrypt, models && express
-var bcrypt = require('bcryptjs');
-var models  = require('../models');
-var express = require('express');
-var router  = express.Router();
-var path = require('path');
+var bcrypt = require('bcryptjs'),
+	models  = require('../models'),
+	path = require('path'),
+	express = require('express'),
+	router  = express.Router();
 
 
 router.get('/sign-in', function(req, res){

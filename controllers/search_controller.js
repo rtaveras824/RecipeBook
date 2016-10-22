@@ -1,7 +1,6 @@
 var models = require('../models'),
 	express = require('express'),
 	router = express.Router(),
-	path = require('path'),
 	sequelize = require('sequelize'),
 	sequelizeConnection = models.sequelize;
 
