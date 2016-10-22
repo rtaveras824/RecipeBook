@@ -9,7 +9,7 @@ var methodOverride = require('method-override');
 
 
 var application_controller = require('./controllers/application_controller.js');
-var recipes_controller = require('./controllers/recipies_controller.js');
+var recipes_controller = require('./controllers/recipe_controller.js');
 var search_controller = require('./controllers/search_controller.js');
 var users_controller = require('./controllers/users_controller.js');
 
