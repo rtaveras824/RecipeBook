@@ -1,4 +1,4 @@
 # RecipeBook
-#Reuben Tavera
-#Nike 
-#Hector
+Reuben Taveras
+Nike Adeyemi
+Hector Santana Quintana
