@@ -25,10 +25,12 @@ module.exports = {
         type: Sequelize.JSON
       },
       private:{
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       price:{
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        defaultValue: 0.00
       },
       createdAt: {
         allowNull: false,
