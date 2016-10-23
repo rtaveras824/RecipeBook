@@ -120,6 +120,8 @@ router.get('/:id/followers', function(req ,res) {
 			attributes: ['username']
 		}).then(function(followers) {
 			console.log(followers);
+			console.log(followers[0].dataValues.username);
+			res.render('user_followers', { followers: followers });
 		})
 	})
 });
