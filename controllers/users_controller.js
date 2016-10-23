@@ -5,6 +5,8 @@ var bcrypt = require('bcryptjs'),
 	express = require('express'),
 	router  = express.Router();
 
+var User;
+
 
 router.get('/sign-in', function(req, res){
 	res.sendFile(path.join(__dirname + '/../public/sign-in.html'));
@@ -84,6 +86,7 @@ router.get('/:id', function(req, res) {
 		}
 	}).then(function(user) {
 		console.log(user);
+		User = user;
 		if(req.session.user_id == user.id) {
 			console.log('This is the owner');
 			res.render('user_profile', { user_id_match: true });
@@ -92,6 +95,37 @@ router.get('/:id', function(req, res) {
 			res.render('user_profile', { user_id_match: false });
 		}
 	});
+});
+
+router.get('/:id/followers', function(req ,res) {
+	res.end('Follwoers');
+});
+
+router.get('/:id/update', function(req ,res) {
+	res.end('Update');
+});
+
+router.get('/:id/recipes', function(req ,res) {
+	res.end('Recipes');
+});
+
+router.get('/:id/recipes-for-sale', function(req ,res) {
+	res.end('For Sale');
+});
+
+router.post('/:id/follow', function(req ,res) {
+	var id = req.params.id;
+	console.log(id);
+
+	models.Users.findOne({
+		where: {
+			id: req.session.user_id
+		}
+	}).then(function(user) {
+		return User.addFollower(user);
+	})
+	
+	res.redirect('/user/' + id);
 });
 
 module.exports = router;

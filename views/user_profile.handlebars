@@ -7,7 +7,9 @@
 {{/if}}
 
 {{#unless user_id_match}}
-	<button id="follow" data-action="follow">Follow This User</button>
+	<form id="follow_form" action="" method="POST">
+		<button id="follow" data-action="follow">Follow This User</button>
+	</form>
 {{/unless}}
 
 	<button id="recipes" data-action="recipes">Recipes</button>
@@ -15,6 +17,10 @@
 </div>
 
 <script type="text/javascript">
+	var currentUrl = window.location.href;
+	console.log(currentUrl);
+
+	document.getElementById('follow_form').action += '/follow';
 
 	var buttons = document.getElementById('buttons');
 	buttons.addEventListener('click', function(event) {
@@ -22,18 +28,19 @@
 		switch(buttonClicked) {
 			case 'followers':
 				console.log('followers');
+				window.location = currentUrl + '/followers';
 				break;
 			case 'edit_profile':
 				console.log('edit profile');
+				window.location = currentUrl + '/update';
 				break;
 			case 'recipes':
 				console.log('recipes');
+				window.location = currentUrl + '/recipes';
 				break;
 			case 'recipes_for_sale':
 				console.log('recipes for sale');
-				break;
-			case 'follow':
-				console.log('follow');
+				window.location = currentUrl + '/recipes-for-sale';
 				break;
 			default:
 				console.log('Uh Oh');
