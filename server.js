@@ -25,7 +25,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-app.use(session({ secret: 'no keyboard cat', cookie: { maxAge: 60000 }}));
+app.use(session({ secret: 'no keyboard cat', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true}));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

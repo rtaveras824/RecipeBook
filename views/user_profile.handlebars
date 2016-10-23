@@ -1,0 +1,43 @@
+<h1>User Profile</h1>
+
+<div id="buttons">
+{{#if user_id_match}}
+	<button id="followers" data-action="followers">Followers</button>
+	<button id="edit_profile" data-action="edit_profile">Edit Profile</button>
+{{/if}}
+
+{{#unless user_id_match}}
+	<button id="follow" data-action="follow">Follow This User</button>
+{{/unless}}
+
+	<button id="recipes" data-action="recipes">Recipes</button>
+	<button id="recipes_for_sale" data-action="recipes_for_sale">Recipes For Sale</button>
+</div>
+
+<script type="text/javascript">
+
+	var buttons = document.getElementById('buttons');
+	buttons.addEventListener('click', function(event) {
+		buttonClicked = event.target.dataset.action;
+		switch(buttonClicked) {
+			case 'followers':
+				console.log('followers');
+				break;
+			case 'edit_profile':
+				console.log('edit profile');
+				break;
+			case 'recipes':
+				console.log('recipes');
+				break;
+			case 'recipes_for_sale':
+				console.log('recipes for sale');
+				break;
+			case 'follow':
+				console.log('follow');
+				break;
+			default:
+				console.log('Uh Oh');
+		}
+	});
+
+</script>

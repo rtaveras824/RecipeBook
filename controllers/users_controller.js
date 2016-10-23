@@ -15,7 +15,7 @@ router.get('/sign-up', function(req, res) {
 })
 
 router.get('/sign-out', function(req, res){
-	req.session.destroy(function(err){ //handlebar call
+	req.session.destroy(function(err){
 		res.redirect('/');
 	});
 });
@@ -70,6 +70,26 @@ router.post('/create', function(req, res) {
 					});
 				});
 			})
+		}
+	});
+});
+
+router.get('/:id', function(req, res) {
+	var id = req.params.id;
+
+	models.Users.findOne({
+		attributes: ['id', 'username', 'email'],
+		where: {
+			id: id
+		}
+	}).then(function(user) {
+		console.log(user);
+		if(req.session.user_id == user.id) {
+			console.log('This is the owner');
+			res.render('user_profile', { user_id_match: true });
+		} else {
+			console.log('This is NOT the owner');
+			res.render('user_profile', { user_id_match: false });
 		}
 	});
 });
