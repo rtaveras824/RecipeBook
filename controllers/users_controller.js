@@ -27,18 +27,18 @@ router.post('/login', function(req, res) {
 		where: {
 			username: req.body.username
 		}
-	}).then(function(user) {
-		console.log(user);
-		if(user == null) {
+	}).then(function(profile_user) {
+		console.log(profile_user);
+		if(profile_user == null) {
 			res.redirect('/user/sign-in');
 		}
 
-		bcrypt.compare(req.body.password, user.passcode, function(err, result) {
+		bcrypt.compare(req.body.password, profile_user.passcode, function(err, result) {
 			if(result == true) {
 				req.session.logged_in = true;
-				req.session.username = user.username;
-				req.session.user_id = user.id;
-				req.session.user_email = user.email;
+				req.session.username = profile_user.username;
+				req.session.user_id = profile_user.id;
+				req.session.user_email = profile_user.email;
 				res.redirect('/');
 			} else {
 				res.redirect('/user/sign-in');
@@ -109,7 +109,19 @@ router.get('/:id', function(req, res) {
 });
 
 router.get('/:id/followers', function(req ,res) {
-	res.end('Follwoers');
+	var id = req.params.id;
+
+	models.Users.findOne({
+		where: {
+			id: id
+		}
+	}).then(function(profile_user) {
+		profile_user.getFollower({
+			attributes: ['username']
+		}).then(function(followers) {
+			console.log(followers);
+		})
+	})
 });
 
 router.get('/:id/update', function(req ,res) {
@@ -117,7 +129,15 @@ router.get('/:id/update', function(req ,res) {
 });
 
 router.get('/:id/recipes', function(req ,res) {
-	res.end('Recipes');
+	var id = req.params.id;
+
+	models.Users.findOne({
+		where: {
+			id: id
+		}
+	}).then(function(profile_user) {
+		User = profile_user;
+	});
 });
 
 router.get('/:id/recipes-for-sale', function(req ,res) {
@@ -132,8 +152,8 @@ router.post('/:id/follow', function(req ,res) {
 		where: {
 			id: req.session.user_id
 		}
-	}).then(function(user) {
-		User.addFollower(user).then(function() {
+	}).then(function(profile_user) {
+		User.addFollower(profile_user).then(function() {
 			res.redirect('/user/' + id);
 		});
 	});
@@ -147,8 +167,8 @@ router.post('/:id/unfollow', function(req ,res) {
 		where: {
 			id: req.session.user_id
 		}
-	}).then(function(user) {
-		User.removeFollower(user).then(function() {
+	}).then(function(profile_user) {
+		User.removeFollower(profile_user).then(function() {
 			res.redirect('/user/' + id);
 		});
 		

@@ -32,7 +32,7 @@
 
 	if(follow_form !== null) {
 		follow_form.action += '/follow';
-	} else {
+	} else if (unfollow_form !== null) {
 		unfollow_form.action += '/unfollow';
 	}
 
