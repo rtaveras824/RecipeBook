@@ -1,0 +1,20 @@
+<h1>Edit User Profile</h1>
+
+<form id="edit_form" action="update?_method=PUT" method="POST">
+	<input type="text" name="description" value="{{user.dataValues.description}}"/>
+	<input type="text" name="email" value="{{user.dataValues.email}}"/>
+	<input type="text" name="image" value="{{user.dataValues.image}}"/>
+	<input type="submit" value="Submit" />
+</form>
+
+<script type="text/javascript">
+
+	var currentUrl = window.location.href;
+	console.log(currentUrl);
+
+	var edit_form = document.getElementById('edit_form');
+
+	//edit_form.action += '/update?_method=PUT';
+	
+
+</script>

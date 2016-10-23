@@ -8,8 +8,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        RecipeBook.belongsToMany(models.Recipe, {through: "RecipeBookRecipe"});
-        RecipeBook.belongsTo(models.Users);
+        // RecipeBook.hasMany(models.Recipe);
+        RecipeBook.belongsTo(models.Users, {as:"UserRecipes", through: "UserRecipeBook"});
       }
     }
   });

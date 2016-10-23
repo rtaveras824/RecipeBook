@@ -2,9 +2,13 @@ var sequelize = require("sequelize");
 var models = require("./models");
 var Dan;
 var Bob;
-models.sequelize.sync({force:true})
 
 
+// We run this query so that we can drop our tables even though they have foreign keys
+models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
+.then(function() {
+	return models.sequelize.sync({force:true});
+})
 
 //create Dummy users
 .then(function(){
@@ -76,7 +80,7 @@ models.sequelize.sync({force:true})
 	.then(function(book){
 		models.Recipe.findOne({where: {name: "Please Ignore Recipe"}})
 		.then(function(recipe){
-			book.addRecipes(recipe);
+			return book.addRecipes(recipe);
 		})
 	})
 })
@@ -111,8 +115,7 @@ models.sequelize.sync({force:true})
 		description: "This is a mistake",
 		ingredients: {array:["1 large egg, beaten", "1 teaspoon water"]},
 		steps: {array:["None"]}
-	})
-	.then(function(recipe){
-		console.log(recipe);
+	}).then(function(recipe) {
+		Dan.addUserRecipes(recipe);
 	})
 })

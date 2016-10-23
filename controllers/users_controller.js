@@ -39,7 +39,7 @@ router.post('/login', function(req, res) {
 				req.session.username = profile_user.username;
 				req.session.user_id = profile_user.id;
 				req.session.user_email = profile_user.email;
-				res.redirect('/');
+				res.redirect('/user/' + profile_user.id);
 			} else {
 				res.redirect('/user/sign-in');
 			}
@@ -81,16 +81,16 @@ router.get('/:id', function(req, res) {
 	var isFollowing;
 
 	models.Users.findOne({
-		attributes: ['id', 'username', 'email'],
+		attributes: ['id', 'username', 'email', 'description'],
 		where: {
 			id: id
 		}
-	}).then(function(user) {
-		console.log(user);
-		User = user;
-		if(req.session.user_id == user.id) {
+	}).then(function(profile_user) {
+		console.log(profile_user);
+		User = profile_user;
+		if(req.session.user_id == profile_user.id) {
 			console.log('This is the owner');
-			res.render('user_profile', { user_id_match: true });
+			res.render('user_profile', { user_id_match: true, user: profile_user });
 		} else {
 			console.log('This is NOT the owner');
 			models.Users.findOne({
@@ -101,7 +101,7 @@ router.get('/:id', function(req, res) {
 				User.hasFollower(client_user).then(function(result) {
 					isFollowing = result;
 					console.log(isFollowing);
-					res.render('user_profile', { user_id_match: false, following: isFollowing });
+					res.render('user_profile', { user_id_match: false, user: profile_user, following: isFollowing });
 				});
 			});
 		}
@@ -119,18 +119,12 @@ router.get('/:id/followers', function(req ,res) {
 		profile_user.getFollower({
 			attributes: ['username']
 		}).then(function(followers) {
-			console.log(followers);
-			console.log(followers[0].dataValues.username);
 			res.render('user_followers', { followers: followers });
 		})
 	})
 });
 
-router.get('/:id/update', function(req ,res) {
-	res.end('Update');
-});
-
-router.get('/:id/recipes', function(req ,res) {
+router.get('/:id/edit-profile', function(req ,res) {
 	var id = req.params.id;
 
 	models.Users.findOne({
@@ -138,12 +132,67 @@ router.get('/:id/recipes', function(req ,res) {
 			id: id
 		}
 	}).then(function(profile_user) {
-		User = profile_user;
+		res.render('user_profile_edit', { user: profile_user });
+	})
+});
+
+router.put('/:id/update', function(req, res) {
+	var id = req.params.id;
+
+	var description = req.body.description;
+	var email = req.body.email;
+	var image = req.body.image;
+
+	models.Users.update({
+		description: description,
+		email: email,
+		image: image
+	}, {
+		where: {
+			id: id
+		}
+	}).then(function() {
+		res.redirect('/user/' + id);
+	});
+});
+
+router.get('/:id/recipes', function(req ,res) {
+	var id = req.params.id;
+	var private;
+	if (req.session.user_id !== id) {
+		private = false;
+	} else {
+		private = true;
+	}
+
+	models.Recipe.findAll({
+		where: {
+			UserId: id,
+			price: {
+				$eq: 0.00
+			},
+			private: private
+		}
+	}).then(function(recipes) {
+		console.log(recipes);
+		res.render('user_recipes', { recipes: recipes });
 	});
 });
 
 router.get('/:id/recipes-for-sale', function(req ,res) {
-	res.end('For Sale');
+	var id = req.params.id;
+
+	models.Recipe.findAll({
+		where: {
+			UserId: id,
+			price: {
+				$not: 0.00
+			}
+		}
+	}).then(function(recipes) {
+		console.log(recipes);
+		res.render('user_recipes', { recipes: recipes });
+	});
 });
 
 router.post('/:id/follow', function(req ,res) {
@@ -178,14 +227,3 @@ router.post('/:id/unfollow', function(req ,res) {
 });
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
