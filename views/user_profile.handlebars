@@ -7,9 +7,16 @@
 {{/if}}
 
 {{#unless user_id_match}}
-	<form id="follow_form" action="" method="POST">
-		<button id="follow" data-action="follow">Follow This User</button>
-	</form>
+	{{#if following}}
+		<form id="unfollow_form" action="" method="POST">
+			<button id="follow" data-action="follow">Unfollow This User</button>
+		</form>
+	{{/if}}
+	{{#unless following}}
+		<form id="follow_form" action="" method="POST">
+			<button id="follow" data-action="follow">Follow This User</button>
+		</form>
+	{{/unless}}
 {{/unless}}
 
 	<button id="recipes" data-action="recipes">Recipes</button>
@@ -20,7 +27,14 @@
 	var currentUrl = window.location.href;
 	console.log(currentUrl);
 
-	document.getElementById('follow_form').action += '/follow';
+	var follow_form = document.getElementById('follow_form');
+	var unfollow_form = document.getElementById('unfollow_form');
+
+	if(follow_form !== null) {
+		follow_form.action += '/follow';
+	} else {
+		unfollow_form.action += '/unfollow';
+	}
 
 	var buttons = document.getElementById('buttons');
 	buttons.addEventListener('click', function(event) {

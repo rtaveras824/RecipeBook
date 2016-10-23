@@ -78,6 +78,7 @@ router.post('/create', function(req, res) {
 
 router.get('/:id', function(req, res) {
 	var id = req.params.id;
+	var isFollowing;
 
 	models.Users.findOne({
 		attributes: ['id', 'username', 'email'],
@@ -92,7 +93,17 @@ router.get('/:id', function(req, res) {
 			res.render('user_profile', { user_id_match: true });
 		} else {
 			console.log('This is NOT the owner');
-			res.render('user_profile', { user_id_match: false });
+			models.Users.findOne({
+				where: {
+					id: req.session.user_id
+				}
+			}).then(function(client_user) {
+				User.hasFollower(client_user).then(function(result) {
+					isFollowing = result;
+					console.log(isFollowing);
+					res.render('user_profile', { user_id_match: false, following: isFollowing });
+				});
+			});
 		}
 	});
 });
@@ -122,10 +133,26 @@ router.post('/:id/follow', function(req ,res) {
 			id: req.session.user_id
 		}
 	}).then(function(user) {
-		return User.addFollower(user);
-	})
-	
-	res.redirect('/user/' + id);
+		User.addFollower(user).then(function() {
+			res.redirect('/user/' + id);
+		});
+	});
+});
+
+router.post('/:id/unfollow', function(req ,res) {
+	var id = req.params.id;
+	console.log(id);
+
+	models.Users.findOne({
+		where: {
+			id: req.session.user_id
+		}
+	}).then(function(user) {
+		User.removeFollower(user).then(function() {
+			res.redirect('/user/' + id);
+		});
+		
+	});
 });
 
 module.exports = router;
