@@ -12,6 +12,7 @@ var application_controller = require('./controllers/application_controller.js');
 var recipes_controller = require('./controllers/recipe_controller.js');
 var search_controller = require('./controllers/search_controller.js');
 var users_controller = require('./controllers/users_controller.js');
+var payment_controller = require('./controllers/payment_controller.js');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/', application_controller);
 app.use('/search', search_controller);
 app.use('/user', users_controller);
 app.use('/recipe', recipes_controller);
+app.use('/payment', payment_controller);
 
 var sequelize = require("sequelize");
 var models = require("./models");
