@@ -58,11 +58,13 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 .then(function(){
 	return models.RecipeBook.create({
 		name: "Ignore this recipe book",
+		price: 20.00
 
 	})
 	.then(function(book){
 		// console.log(book);
-		return Dan.addUserRecipeBooks(book)
+		Dan.addUserRecipeBooks(book);
+		Bob.addPaidRecipeBooks(book);
 	})
 	// .then(function(){
 	// // models.RecipeBook.findOne({where: {name:"Ignore this recipe book"}})
