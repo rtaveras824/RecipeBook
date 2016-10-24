@@ -15,6 +15,8 @@ router.get('/', function(req, res) {
 router.get('/results', function(req, res) {
 	//start value is used for pagination, to offset the SQL query
 	var start = req.query.start;
+	var purchaseFilter = req.query.purchase_filter;
+	var orderFilter = req.query.order_filter;
 
 	//The terms they are searching for
 	var searchString = req.query.q;
@@ -32,11 +34,30 @@ router.get('/results', function(req, res) {
 
 		queryString += 'name LIKE "%' + word + '%" ';
 	});
+
+	if (purchaseFilter != 'all') {
+		queryString += 'AND price '
+		if (purchaseFilter == 'free') {
+			queryString += '= 0 ';
+		} else {
+			queryString += '> 0 ';
+		}
+
+	}
+
+	if (orderFilter != 'none'){
+		queryString += 'ORDER BY price ';
+		if (orderFilter == 'highest') {
+			queryString += 'DESC ';
+		}
+	}
+
 	queryString += 'LIMIT 10';
 	if (start !== 0) {
 		//OFFSET will be used for pagination
 		queryString += ' OFFSET ' + start;
 	}
+	
 	queryString += ';';
 
 	sequelizeConnection.query(queryString, { type: sequelize.QueryTypes.SELECT })

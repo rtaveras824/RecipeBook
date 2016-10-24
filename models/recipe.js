@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     ingredients: DataTypes.JSON,
     steps: DataTypes.JSON,
     private:{type:DataTypes.BOOLEAN,defaultValue:false},
-    price: {type: DataTypes.FLOAT, defaultValue: 0.00}
+    price: {type: DataTypes.DECIMAL(10, 2), defaultValue: 0.00}
   }, {
     classMethods: {
       associate: function(models) {

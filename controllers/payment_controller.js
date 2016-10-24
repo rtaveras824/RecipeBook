@@ -12,7 +12,15 @@ var gateway = braintree.connect({
 });
 
 router.get('/', function(req, res) {
-	res.render('payment');
+	var recipe_id = req.query.recipe_id;
+
+	models.Recipe.findOne({
+		where: {
+			id: recipe_id
+		}
+	}).then(function(recipe) {
+		res.render('payment', { recipe: recipe });
+	});
 });
 
 router.get('/client_token', function(req, res) {

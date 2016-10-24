@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var RecipeBook = sequelize.define('RecipeBook', {
     name: DataTypes.STRING,
     private: {type: DataTypes.BOOLEAN, defaultValue: false},
-    price: {type: DataTypes.FLOAT, defaultValue: false}
+    price: {type: DataTypes.DECIMAL(10, 2), defaultValue: false}
   }, {
     classMethods: {
       associate: function(models) {

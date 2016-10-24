@@ -1,6 +1,8 @@
 <form id="checkout-form" action="payment/checkout" method="post">
 	<div id="error-message"></div>
 
+	<input type="hidden" name="recipe_id" value={{dataValues.id}} />
+
 	<label for="card number">Card Number</label>
 	<div class="hosted-field" id="card-number"></div>
 
