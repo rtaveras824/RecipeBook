@@ -24,20 +24,52 @@ router.get('/client_token', function(req, res) {
 
 router.post('/checkout', function(req, res) {
 	// var nonceFromTheClient = req.body.payment_method_nonce;
+	var id = req.session.user_id;
 
-	gateway.transaction.sale({
-		amount: '10.00',
-		paymentMethodNonce: 'fake-valid-nonce',
-		options: {
-			submitForSettlement: true
-		}
-	}, function(err, result) {
+	gateway.customer.search(function(search) {
+		search.id().is(id);
+	}, function(err, response) {
 		if(err) {
 			console.log(err);
-			return;
 		}
-		console.log(result);
+		console.log("This is the response", response);
+
+		if (response.ids.length > 0) {
+			response.each(function(err, customer) {
+				console.log("This is the customer", customer);
+				transaction(id);
+			});
+		} else {
+			gateway.customer.create({
+				id: req.session.user_id,
+				firstName: req.session.username,
+				email: req.session.user_email
+			}, function(err, result) {
+				console.log(result);
+				transaction(id);
+			});
+		}
 	});
+	
+	function transaction(user_id) {
+		gateway.transaction.sale({
+			amount: '10.00',
+			paymentMethodNonce: 'fake-valid-nonce',
+			customerId: user_id,
+			options: {
+				submitForSettlement: true
+			}
+		}, function(err, result) {
+			if(err) {
+				console.log(err);
+				return;
+			}
+			console.log(result);
+			res.sendFile(path.join(__dirname + '/../public/payment-redirect.html'));
+		});
+	}
+
+	
 });
 
 module.exports = router;

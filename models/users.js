@@ -11,9 +11,12 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         
-        Users.hasMany(models.RecipeBook);
+        
         Users.hasMany(models.Recipe, {as: "UserRecipes"});
-        Users.belongsToMany(models.Recipe, {as:"FavoriteRecipes", through:"UserFavoriteRecipe"})
+        Users.hasMany(models.RecipeBook, {as: "UserRecipeBooks"});
+        Users.belongsToMany(models.Recipe, {as: "PaidRecipes", through: "UserPaidRecipe"});
+        Users.belongsToMany(models.Recipe, {as:"FavoriteRecipes", through:"UserFavoriteRecipe"});
+        Users.belongsToMany(models.RecipeBook, {as:"UserFavoriteRecipeBooks", through: "UserFavoriteRecipeBook"});
         Users.belongsToMany(models.Users, {as:"Follower", through:"UserFollower"})
 
       }
