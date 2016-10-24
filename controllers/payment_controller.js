@@ -19,6 +19,7 @@ router.get('/', function(req, res) {
 			id: recipe_id
 		}
 	}).then(function(recipe) {
+		console.log('recipe', recipe);
 		res.render('payment', { recipe: recipe });
 	});
 });
@@ -33,6 +34,8 @@ router.get('/client_token', function(req, res) {
 router.post('/checkout', function(req, res) {
 	// var nonceFromTheClient = req.body.payment_method_nonce;
 	var id = req.session.user_id;
+
+	var price = req.body.price;
 
 	gateway.customer.search(function(search) {
 		search.id().is(id);
@@ -61,7 +64,7 @@ router.post('/checkout', function(req, res) {
 	
 	function transaction(user_id) {
 		gateway.transaction.sale({
-			amount: '10.00',
+			amount: price,
 			paymentMethodNonce: 'fake-valid-nonce',
 			customerId: user_id,
 			options: {
