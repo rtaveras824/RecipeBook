@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
-<body>
-
-	<form action="/user/login" method="POST">
-		<input type="text" name="username" />
-		<input type="text" name="password" />
-		<input type="submit" value="Search for stuff" />
+		<title>Sign-In</title>
+	</head>
+	<body>
+		<div class="container">
+		<div>
+			 <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+		</div>
+        <div class="card card-container">
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form> <!--en of form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div> <!-- end of card-container -->
+    </div> <!-- end of container -->
 	</form>
-
-</body>
+	</body>
 
 </html>

@@ -1,0 +1,47 @@
+
+	<h1>Add Recipe</h1>
+		<div class="container">
+
+			<form action = "/recipe/create" method = "POST"> <!--Name of the recipe -->
+			<div class="card card-container">
+				<div class="form-group">
+					<label>Name your recipe</label>
+					<input class="form-control" type = "text" name = "name"> 
+
+				</div> 
+
+				<div class="form-group"> <!--Description of recipe-->
+					<label>Description:</label>
+					<input class="form-control" type = "text" name = "description">
+				</div>
+				<div class="form-group"> <!--Post your URL Image-->
+					<label>Image:</label>
+					<input class="form-control" type = "text" name = "image">
+				</div>
+    			<div class="form-group">  <!--Ingredients-->
+     			  	<label for="comment">Ingredients:</label>
+     			  	<textarea class="form-control" rows="5" id="Ingredients"></textarea>
+    			</div>
+    			<div class="form-group"> <!--Steps for the recipe-->
+     			 	<label for="comment">Steps:</label>
+     			 	<textarea class="form-control" rows="5" id="Steps"></textarea>
+    			</div>
+  				<div class="form-group"> <!--Option to see if Recipe is Private or Public-->
+  					<label>Private</label>
+						<select name="Private">
+							<option value = "false">No</option>
+							<option value = "true">Yes</option>
+						</select>
+				</div>
+				<div class="form-group"> <!--Price of Private Recipe -->
+					<label>Price</label>
+					<input  class="form-control" type="text" name="Price" placeholder="0.00">
+				</div>
+
+				<button class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
+			</div> <!--End of div card -->
+			</form> <!--End of form -->
+		<div> <!--End of Container -->
+
+
+

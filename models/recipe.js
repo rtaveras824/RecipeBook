@@ -4,8 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     image: DataTypes.STRING,
-    ingredients: DataTypes.JSON,
-    steps: DataTypes.JSON,
+    ingredients: DataTypes.TEXT,
+    steps: DataTypes.TEXT,
     private:{type:DataTypes.BOOLEAN,defaultValue:false},
     price: {type: DataTypes.FLOAT, defaultValue: 0.00}
   }, {
