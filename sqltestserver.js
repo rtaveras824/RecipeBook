@@ -58,11 +58,13 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 .then(function(){
 	return models.RecipeBook.create({
 		name: "Ignore this recipe book",
+		price: 20.00
 
 	})
 	.then(function(book){
 		// console.log(book);
-		return Dan.addRecipeBooks(book)
+		Dan.addUserRecipeBooks(book);
+		Bob.addPaidRecipeBooks(book);
 	})
 	// .then(function(){
 	// // models.RecipeBook.findOne({where: {name:"Ignore this recipe book"}})
@@ -80,7 +82,7 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 	.then(function(book){
 		models.Recipe.findOne({where: {name: "Please Ignore Recipe"}})
 		.then(function(recipe){
-			return book.addRecipes(recipe);
+			return book.addRecipeBookRecipes(recipe);
 		})
 	})
 })
@@ -91,8 +93,7 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 	})
 	.then(function(book){
 		console.log(book);
-		Dan.addRecipeBooks(book)
-
+		Dan.addUserRecipeBooks(book)
 	})
 
 })
@@ -103,8 +104,8 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 	})
 	.then(function(book){
 		console.log(book);
-		Bob.addRecipeBooks(book)
-
+		Bob.addUserRecipeBooks(book)
+		Dan.addUserFavoriteRecipeBooks(book);
 	})
 
 })
@@ -113,9 +114,12 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 	return models.Recipe.create({
 		name: "Super Awesome Chicken Recipe",
 		description: "This is a mistake",
-		ingredients: "1 large egg, beaten 1 teaspoon water",
-		steps: "None"
+		ingredients: "1 large egg, beaten, 1 teaspoon water",
+		steps: "None",
+		private: false,
+		price: 5.00
 	}).then(function(recipe) {
 		Dan.addUserRecipes(recipe);
+		Bob.addPaidRecipes(recipe);
 	})
 })

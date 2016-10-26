@@ -7,13 +7,13 @@ module.exports = function(sequelize, DataTypes) {
     ingredients: DataTypes.TEXT,
     steps: DataTypes.TEXT,
     private:{type:DataTypes.BOOLEAN,defaultValue:false},
-    price: {type: DataTypes.FLOAT, defaultValue: 0.00}
+    price: {type: DataTypes.DECIMAL(10, 2), defaultValue: 0.00}
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Recipe.belongsTo(models.Users, {through: "UserRecipe"});
-        Recipe.belongsToMany(models.RecipeBook, {through: "RecipeBookRecipe"});
+        // Recipe.belongsTo(models.Users, {through: "UserRecipe"});
+        // Recipe.belongsTo(models.Users, {through: "UserPaidRecipe"});
       }
     }
   });
