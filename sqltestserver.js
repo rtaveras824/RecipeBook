@@ -41,8 +41,8 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 	return models.Recipe.create({
 		name: "Please Ignore Recipe",
 		description: "This is a mistake",
-		ingredients: {array:["1 large egg, beaten", "1 teaspoon water"]},
-		steps: {array:["None"]}
+		ingredients: "1 large egg, beaten 1 teaspoon water",
+		steps: "None"}
 	})
 	.then(function(recipe){
 		Dan.addUserRecipes(recipe)
@@ -114,8 +114,8 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 	return models.Recipe.create({
 		name: "Super Awesome Chicken Recipe",
 		description: "This is a mistake",
-		ingredients: {array:["1 large egg, beaten", "1 teaspoon water"]},
-		steps: {array:["None"]},
+		ingredients: "1 large egg, beaten, 1 teaspoon water",
+		steps: "None",
 		private: false,
 		price: 5.00
 	}).then(function(recipe) {
