@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
-<body>
+		<title>Sign up</title>
+	</head>
+	<body>
+		<div class="container">
+		
+        <div class="">
 
-	<form action="/user/create" method="POST">
-		<input type="text" name="email" />
-		<input type="text" name="username" />
-		<input type="text" name="password" />
-		<input type="submit" value="Search for stuff" />
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <div class="">
+                	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                </div>
+                <div class="">
+                	<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                </div>
+                <div class="">
+               		<input type="password" name="repeat password" id="inputPassword" class="form-control" placeholder="Re-enter password">
+                </div>
+                
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Continue</button>
+            </form> <!--end of form -->
+            
+        </div> <!-- end of card-container -->
+    </div> <!-- end of container -->
 	</form>
-
-</body>
+	</body>
 
 </html>
