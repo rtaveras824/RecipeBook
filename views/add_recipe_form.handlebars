@@ -20,22 +20,22 @@
 				</div>
     			<div class="form-group">  <!--Ingredients-->
      			  	<label for="comment">Ingredients:</label>
-     			  	<textarea class="form-control" rows="5" id="Ingredients"></textarea>
+     			  	<textarea class="form-control" rows="5" id="Ingredients" name="ingredients"></textarea>
     			</div>
     			<div class="form-group"> <!--Steps for the recipe-->
      			 	<label for="comment">Steps:</label>
-     			 	<textarea class="form-control" rows="5" id="Steps"></textarea>
+     			 	<textarea class="form-control" rows="5" id="Steps" name="steps"></textarea>
     			</div>
   				<div class="form-group"> <!--Option to see if Recipe is Private or Public-->
   					<label>Private</label>
-						<select name="Private">
+						<select name="private">
 							<option value = "false">No</option>
 							<option value = "true">Yes</option>
 						</select>
 				</div>
 				<div class="form-group"> <!--Price of Private Recipe -->
 					<label>Price</label>
-					<input  class="form-control" type="text" name="Price" placeholder="0.00">
+					<input  class="form-control" type="text" name="price" value="0.00">
 				</div>
 
 				<button class="btn btn-md btn-primary btn-block" type="submit">Submit</button>

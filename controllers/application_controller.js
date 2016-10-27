@@ -13,6 +13,7 @@ router.get('/', function (req, res){
 		}).then(function(recipes){
 			console.log(recipes);
 			res.render('index', { 
+				user_id: req.session.user_id,
 				title: 'Main',
 				ogtitle: 'GET BACK TO WORK',
 				recipes_array: recipes

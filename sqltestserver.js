@@ -42,6 +42,7 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 		name: "Please Ignore Recipe",
 		description: "This is a mistake",
 		ingredients: "1 large egg, beaten 1 teaspoon water",
+		image: "http://images.media-allrecipes.com/userphotos/720x405/1056183.jpg",
 		steps: "None"
 	})
 	.then(function(recipe){
@@ -112,9 +113,10 @@ models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
 //put dans recipe in his recipe book
 .then(function() {
 	return models.Recipe.create({
-		name: "Super Awesome Chicken Recipe",
+		name: "Super Awesome Lasagna Recipe",
 		description: "This is a mistake",
 		ingredients: "1 large egg, beaten, 1 teaspoon water",
+		image: "http://images.media-allrecipes.com/userphotos/720x405/251626.jpg",
 		steps: "None",
 		private: false,
 		price: 5.00
