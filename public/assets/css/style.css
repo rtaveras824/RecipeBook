@@ -1,15 +1,58 @@
-body, html {
-    height: 100%;
-    background-repeat: no-repeat;
-    background-color: white ;
+body, 
+html {
+	min-height: 100%
 }
+body {
+	background-image: url(../images/backimg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
 h1 {
 	text-align: center;
 }
-p {
-	text-align: center;
-	color: white;
+a {
+	text-decoration: none !important;
 }
+.logfrom {
+	padding-left: 100px;
+	color: white;
+	opacity: none;
+
+}
+/*button {
+    color: white;
+    padding: auto auto;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+  
+}*/
+.navbar {
+	margin-top: 200px;
+	width: 600px;
+	height: 80px;
+	line-height: 80px;	
+	position: fixed;
+	margin-left: 350px;
+	border-radius: 10px;
+
+}
+#color{
+	background-color:  midnightblue;	
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+#logo {
+	background-image : url(../assets/images/logo.jpg) no-repeat top left; 
+    border-radius: 50%;
+    margin-right: 65px;
+    width: 120px;
+    height:120px;
+    margin-top: -15px;
+}
+
+
 /*Sign in and sign up*/
 .form-group {
 	align-content: center;
@@ -66,16 +109,22 @@ p {
 	margin-left: -300px;
 }
 .footer {
-    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
-    line-height: 60px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 2.5%;
+    position: fixed;
 }
-/*welcome page*/
+#footercolor {
+	text-align: left;
+	color: black;
+
+}
+
 
 .jumbotron {
-	background-color: 
+	background-color: black !important;
 }
 
 
