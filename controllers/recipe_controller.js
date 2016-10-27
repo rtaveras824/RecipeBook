@@ -22,11 +22,20 @@ router.post('/create',function(req, res){
 			name: req.body.name,
 			description: req.body.description,
 			ingredients: req.body.ingredients,
-			steps: req.body.steps
-	
+			image: req.body.image,
+			steps: req.body.steps,
+			private: req.body.private,
+			price: req.body.price
 	}).then(function(recipe){
-		res.redirect('/');
-	})
+		models.Users.findOne({
+			where: {
+				id: req.session.user_id
+			}
+		}).then(function(user) {
+			user.addUserRecipe(recipe);
+			res.redirect('/');
+		});
+	});
 });
 router.get('/:id',function(req, res){
 	var id = req.params.id;

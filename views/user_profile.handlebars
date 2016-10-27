@@ -8,6 +8,8 @@
 {{#if user_id_match}}
 	<button id="followers" data-action="followers">Followers</button>
 	<button id="edit_profile" data-action="edit_profile">Edit Profile</button>
+	<button id="add_recipe" data-action="add_recipe">Add Recipe</button>
+	<button id="add_recipebook" data-action="add_recipebook">Add Recipe Book</button>
 {{/if}}
 
 {{#unless user_id_match}}
@@ -59,6 +61,14 @@
 			case 'recipes_for_sale':
 				console.log('recipes for sale');
 				window.location = currentUrl + '/recipes-for-sale';
+				break;
+			case 'add_recipe':
+				console.log('add recipe');
+				window.location = window.location.origin + '/recipe/add';
+				break;
+			case 'add_recipebook':
+				console.log('add recipebook');
+				window.location = window.location.origin + '/recipebook/create_new_recipebook';
 				break;
 			default:
 				console.log('Uh Oh');

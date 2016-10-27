@@ -16,3 +16,4 @@ purchaseFilter.addEventListener('click', function(event) {
 	console.log('clicked', event.target.value);
 	toggleOrderFilterDisplay(event.target.value);
 });
+

@@ -2,11 +2,23 @@
 
 	<p>{{ recipe2.dataValues.name }}</p>
 	<p>{{ recipe2.dataValues.description }}</p>
-	<img src="{{ recipe2.dataValues.image }}">
-	<p>{{ recipe2.dataValues.ingredients }}</p>
-	<p>{{ recipe2.dataValues.steps }}</p>
+	<img src="{{ recipe2.dataValues.image }}" />
+	<p id="ingredients">{{ recipe2.dataValues.ingredients }}</p>
+	<p id="steps">{{ recipe2.dataValues.steps }}</p>
 
+<script type="text/javascript">
+	var ingredientsField = document.getElementById('ingredients');
+	var ingredients = ingredientsField.innerHTML;
 
+	var stepsField = document.getElementById('steps');
+	var steps = stepsField.innerHTML;
 
+	ingredientsField.innerHTML = replaceNewlinesWithBreaks(ingredients);
+	stepsField.innerHTML = replaceNewlinesWithBreaks(steps);
 
+	function replaceNewlinesWithBreaks(value) {
+		var valueWithBreaks = value.replace(/(\r\n|\r|\n)/g, '<br>');
+		return valueWithBreaks;
+	}
 
+</script>
