@@ -169,20 +169,26 @@ router.put('/:id/update', function(req, res) {
 router.get('/:id/recipes', function(req ,res) {
 	var id = req.params.id;
 	var private;
-	if (req.session.user_id !== id) {
+	if (req.session.user_id != id) {
 		private = false;
-	} else {
-		private = true;
-	}
-
-	models.Recipe.findAll({
-		where: {
+		var whereObject = {
 			UserId: id,
 			price: {
 				$eq: 0.00
 			},
 			private: private
+		};
+	} else {
+		var whereObject = {
+			UserId: id,
+			price: {
+				$eq: 0.00
+			}
 		}
+	}
+
+	models.Recipe.findAll({
+		where: whereObject
 	}).then(function(recipes) {
 		console.log(recipes);
 		res.render('user_recipes', { 
@@ -203,13 +209,49 @@ router.get('/:id/recipes-for-sale', function(req ,res) {
 			}
 		}
 	}).then(function(recipes) {
-		console.log(recipes);
-		res.render('user_recipes', {
-			user_id: req.session.user_id, 
-			recipes: recipes 
-		});
+		models.Users.findOne({
+			where: {
+				id: req.session.user_id
+			}
+		}).then(function(user) {
+			user.getPaidRecipes().then(function(paid_recipes) {
+				console.log('user paid recipes', paid_recipes);
+				
+				var paid = [];
+				for(var i = 0; i < recipes.length; i++) {
+					for(var j = 0; j < paid_recipes.length; j++) {
+						if (recipes[i].dataValues.id == paid_recipes[j].dataValues.id) {
+							recipes[i].dataValues.paid = true;
+						}
+					}
+				}
+				console.log(recipes);
+				console.log('THIS IS PAID', paid);
+				res.render('user_recipes', {
+					user_id: req.session.user_id, 
+					recipes: recipes
+				});
+			})
+		})
+		
 	});
 });
+
+router.get('/:id/paid-recipes', function(req, res) {
+	models.Users.findOne({
+		where: {
+			id: req.session.user_id
+		}
+	}).then(function(user) {
+		user.getPaidRecipes().then(function(paid_recipes) {
+			console.log(paid_recipes);
+			res.render('user_recipes', { 
+				user_id: req.session.user_id,
+				recipes: paid_recipes 
+			});
+		})
+	})
+})
 
 router.post('/:id/follow', function(req ,res) {
 	var id = req.params.id;

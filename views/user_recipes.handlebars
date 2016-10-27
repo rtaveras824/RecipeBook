@@ -4,4 +4,13 @@
 	<a href="/recipe/{{dataValues.id}}">
 		<p>{{ dataValues.name }}</p>
 	</a>
+	{{#if dataValues.private}}
+		<p>Private</p>
+	{{/if}}
+	{{#unless dataValues.private}}
+		<p>Public</p>
+	{{/unless}}
+	{{#if dataValues.paid}}
+		<p>Paid</p>
+	{{/if}}
 {{/each}}

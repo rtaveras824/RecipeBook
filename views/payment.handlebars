@@ -14,7 +14,7 @@
 	<div class="hosted-field" id="expiration-date"></div>
 
 	<input type="hidden" name="payment-method-nonce">
-	<input type="submit" value="Pay ${{dataValues.price}}" disabled>
+	<input type="submit" value="Pay ${{recipe.dataValues.price}}">
 </form>
 
 <!-- Load the Client component -->
@@ -78,10 +78,11 @@ braintree.client.create({
 	}, function(hostedFieldsErr, hostedFieldsInstance) {
 		if (hostedFieldsErr) {
 			// Handle error in Hosted Fields creation
+			console.log(hostedFieldsErr);
 			return;
 		}
 
-		submit.removeAttribute('disabled');
+		//submit.removeAttribute('disabled');
 
 		form.addEventListener('submit', function(event) {
 			event.preventDefault();

@@ -10,6 +10,7 @@
 	<button id="edit_profile" data-action="edit_profile">Edit Profile</button>
 	<button id="add_recipe" data-action="add_recipe">Add Recipe</button>
 	<button id="add_recipebook" data-action="add_recipebook">Add Recipe Book</button>
+	<button id="paid_recipes" data-action="paid_recipes">Paid Recipes</button>
 {{/if}}
 
 {{#unless user_id_match}}
@@ -70,6 +71,9 @@
 				console.log('add recipebook');
 				window.location = window.location.origin + '/recipebook/create_new_recipebook';
 				break;
+			case 'paid_recipes':
+				console.log('paid recipes');
+				window.location = currentUrl + '/paid-recipes';
 			default:
 				console.log('Uh Oh');
 		}

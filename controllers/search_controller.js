@@ -52,11 +52,11 @@ router.get('/results', function(req, res) {
 		}
 	}
 
-	queryString += 'LIMIT 10';
-	if (start !== 0) {
-		//OFFSET will be used for pagination
-		queryString += ' OFFSET ' + start;
-	}
+	// queryString += 'LIMIT 10';
+	// if (start !== 0) {
+	// 	//OFFSET will be used for pagination
+	// 	queryString += ' OFFSET ' + start;
+	// }
 	
 	queryString += ';';
 
@@ -65,7 +65,28 @@ router.get('/results', function(req, res) {
 			sequelizeConnection.query('SELECT FOUND_ROWS();', { type: sequelize.QueryTypes.SELECT })
 				.then(function(count) {
 					console.log('count[0]["FOUND_ROWS()"] IT WORKED', count[0]['FOUND_ROWS()']);
-					res.render('results', { arrayOfSearchResults: recipes });
+					models.Users.findOne({
+						where: {
+							id: req.session.user_id
+						}
+					}).then(function(user) {
+						user.getPaidRecipes().then(function(paid_recipes) {
+							console.log('paid recipes', paid_recipes);
+							console.log('recipes', recipes);
+							for(var i = 0; i < recipes.length; i++) {
+								for(var j = 0; j < paid_recipes.length; j++) {
+									if (recipes[i].id == paid_recipes[j].dataValues.id) {
+										recipes[i].paid = true;
+									}
+								}
+							}
+							res.render('results', { 
+								user_id: req.session.user_id,
+								arrayOfSearchResults: recipes 
+							});
+						})
+					})
+					
 				});
 		});
 
