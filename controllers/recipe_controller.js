@@ -13,8 +13,25 @@ router.get('/add', function(req, res){
 	res.render('add_recipe_form', {
 		user_id: req.session.user_id
 	});
+});
 
-})
+router.post('/:id/favorite', function(req, res) {
+	models.Users.findOne({
+		where: {
+			id: req.session.user_id
+		}
+	}).then(function(user) {
+		models.Recipe.findOne({
+			where: {
+				id: req.params.id
+			}
+		}).then(function(recipe) {
+			user.addFavoriteRecipes(recipe).then(function() {
+				res.redirect('/recipe/' + req.params.id);
+			})
+		})
+	});
+});
 
 router.post('/create',function(req, res){
 	console.log(req.body.name);
@@ -44,11 +61,25 @@ router.get('/:id',function(req, res){
 			id: id
 		}
 	}).then(function(recipe){
-		console.log(recipe);
-		res.render('recipe', {
-			user_id: req.session.user_id,
-			recipe2: recipe
+		models.Users.findOne({
+			where: {
+				id: req.session.user_id
+			}
+		}).then(function(user) {
+			user.getFavoriteRecipes().then(function(recipes) {
+				for(var i = 0; i < recipes.length; i++) {
+					if(recipes[i].dataValues.id == id) {
+						recipe.dataValues.favorited = true;
+					}
+				}
+				console.log(recipe);
+				res.render('recipe', {
+					user_id: req.session.user_id,
+					recipe2: recipe
+				})
+			})
 		})
+		
 	})
 	
 })

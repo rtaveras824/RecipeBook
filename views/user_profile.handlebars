@@ -11,6 +11,7 @@
 	<button id="add_recipe" data-action="add_recipe">Add Recipe</button>
 	<button id="add_recipebook" data-action="add_recipebook">Add Recipe Book</button>
 	<button id="paid_recipes" data-action="paid_recipes">Paid Recipes</button>
+	<button id="favorite_recipes" data-action="favorite_recipes">Favorite Recipes</button>
 {{/if}}
 
 {{#unless user_id_match}}
@@ -74,6 +75,9 @@
 			case 'paid_recipes':
 				console.log('paid recipes');
 				window.location = currentUrl + '/paid-recipes';
+			case 'favorite_recipes':
+				console.log('favorite recipes');
+				window.location = currentUrl + '/favorites';
 			default:
 				console.log('Uh Oh');
 		}

@@ -131,6 +131,23 @@ router.get('/:id/followers', function(req ,res) {
 	})
 });
 
+router.get('/:id/favorites', function(req, res) {
+	var id = req.params.id;
+
+	models.Users.findOne({
+		where: {
+			id: id
+		}
+	}).then(function(user) {
+		user.getFavoriteRecipes().then(function(recipes) {
+			res.render('user_favorites', {
+				user_id: req.session.user_id,
+				recipes: recipes
+			})
+		})
+	})
+})
+
 router.get('/:id/edit-profile', function(req ,res) {
 	var id = req.params.id;
 
@@ -252,6 +269,8 @@ router.get('/:id/paid-recipes', function(req, res) {
 		})
 	})
 })
+
+
 
 router.post('/:id/follow', function(req ,res) {
 	var id = req.params.id;
