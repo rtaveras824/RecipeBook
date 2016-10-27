@@ -1,6 +1,9 @@
 
-<div class="container">
-	<div class="jumbotron">
+<div class="jumbotron">
+	<div class="container">
 		<h1>Welcome to Recipe Book!</h1>
+		{{#each recipes_array}}
+			<img src="{{dataValue.image}}">
+		{{/each}}
 	</div>
 </div>

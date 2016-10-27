@@ -7,10 +7,18 @@ var models  = require('../models'),
 router.get('/', function (req, res){
 	var button = '';
 	if (req.session.user_id) {
-		res.render('index', { 
-			title: 'Main',
-			ogtitle: 'GET BACK TO WORK'
-		});
+		models.Recipe.findAll({
+			attributes: ['id', 'name', 'description', 'image'],
+			limit: 10
+		}).then(function(recipes){
+			console.log(recipes);
+			res.render('index', { 
+				title: 'Main',
+				ogtitle: 'GET BACK TO WORK',
+				recipes_array: recipes
+			});
+		})
+		
 	} else {
 		res.sendFile(path.join(__dirname + '/../public/landing-page.html'));
 	}
