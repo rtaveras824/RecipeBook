@@ -1,10 +1,12 @@
 {{#each arrayOfSearchResults}}
-	<h2>{{name}}</h2>
-	<p>{{description}}</p>
-	{{#if price}}
-		<form action="/payment" method="GET">
-			<input type="hidden" name="recipe_id" value="{{id}}" />
-			<input type="submit" value="{{price}}" />
-		</form>
-	{{/if}}
+	<a href="/recipe/{{id}}">
+		<h2>{{name}}</h2>
+		<p>{{description}}</p>
+		{{#if price}}
+			<form action="/payment" method="GET">
+				<input type="hidden" name="recipe_id" value="{{id}}" />
+				<input type="submit" value="{{price}}" />
+			</form>
+		{{/if}}
+	</a>
 {{/each}}

@@ -101,7 +101,11 @@ router.get('/:id', function(req, res) {
 				User.hasFollower(client_user).then(function(result) {
 					isFollowing = result;
 					console.log(isFollowing);
-					res.render('user_profile', { user_id_match: false, user: profile_user, following: isFollowing });
+					res.render('user_profile', { 
+						user_id: req.session.user_id,
+						user_id_match: false, 
+						user: profile_user, 
+						following: isFollowing });
 				});
 			});
 		}
@@ -119,7 +123,10 @@ router.get('/:id/followers', function(req ,res) {
 		profile_user.getFollower({
 			attributes: ['username']
 		}).then(function(followers) {
-			res.render('user_followers', { followers: followers });
+			res.render('user_followers', { 
+				user_id: req.session.user_id,
+				followers: followers 
+			});
 		})
 	})
 });
@@ -132,7 +139,10 @@ router.get('/:id/edit-profile', function(req ,res) {
 			id: id
 		}
 	}).then(function(profile_user) {
-		res.render('user_profile_edit', { user: profile_user });
+		res.render('user_profile_edit', { 
+			user_id: req.session.user_id,
+			user: profile_user 
+		});
 	})
 });
 
@@ -175,7 +185,10 @@ router.get('/:id/recipes', function(req ,res) {
 		}
 	}).then(function(recipes) {
 		console.log(recipes);
-		res.render('user_recipes', { recipes: recipes });
+		res.render('user_recipes', { 
+			user_id: req.session.user_id,
+			recipes: recipes 
+		});
 	});
 });
 
@@ -191,7 +204,10 @@ router.get('/:id/recipes-for-sale', function(req ,res) {
 		}
 	}).then(function(recipes) {
 		console.log(recipes);
-		res.render('user_recipes', { recipes: recipes });
+		res.render('user_recipes', {
+			user_id: req.session.user_id, 
+			recipes: recipes 
+		});
 	});
 });
 

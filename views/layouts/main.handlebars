@@ -30,12 +30,22 @@
         <div class="form-group searchIt">
           <input type="text" class="form-control" name="q" placeholder="Search">
           <input type="hidden" name="start" value="0">
+          <select id="purchase_filter" name="purchase_filter">
+            <option value="all">All</option>
+            <option value="free">Free</option>
+            <option value="purchase">Purchase</option>
+          </select>
+          <select id="order_filter" name="order_filter">
+            <option value="none">None</option>
+            <option value="lowest">Lowest</option>
+            <option value="highest">Highest</option>
+          </select>
           <input type="submit" class="btn btn-info" value="Search">
         </div>
       </form>
 
     <div>
-    	<a href="">
+    	<a href="/user/{{user_id}}">
     	 <img id="profile-img" class="profile-img-main" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
       </a>
     </div>
@@ -48,7 +58,7 @@
 	{{{ body }}}
 
 
-
+<script src="/assets/javascript/app.js" type="text/javascript"></script>
 
 <footer class="footer ">
 	<div class="container">

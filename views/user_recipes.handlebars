@@ -1,5 +1,7 @@
 <h1>User Recipes</h1>
 
 {{#each recipes}}
-	<p>{{ dataValues.name }}</p>
+	<a href="/recipe/{{dataValues.id}}">
+		<p>{{ dataValues.name }}</p>
+	</a>
 {{/each}}

@@ -4,11 +4,15 @@ var express = require('express');
 var router  = express.Router();
 
 router.get('/', function(req, res) {
-	res.render('recipes');
+	res.render('recipes', {
+		user_id: req.session.user_id
+	});
 })
 
 router.get('/add', function(req, res){
-	res.render('add_recipe_form');
+	res.render('add_recipe_form', {
+		user_id: req.session.user_id
+	});
 
 })
 
@@ -33,6 +37,7 @@ router.get('/:id',function(req, res){
 	}).then(function(recipe){
 		console.log(recipe);
 		res.render('recipe', {
+			user_id: req.session.user_id,
 			recipe2: recipe
 		})
 	})

@@ -3,8 +3,10 @@
 	<div class="container">
 		<h1>Welcome to Recipe Book!</h1>
 		{{#each recipes_array}}
-			<p>This is working {{dataValues.name}}</p>
-			<img src="{{dataValues.image}}">
+			<a href="/recipe/{{dataValues.id}}"
+				<p>This is working {{dataValues.name}}</p>
+				<img src="{{dataValues.image}}">
+			</a>
 		{{/each}}
 	</div>
 </div>
