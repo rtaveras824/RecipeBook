@@ -35,6 +35,7 @@ router.post('/checkout', function(req, res) {
 	// var nonceFromTheClient = req.body.payment_method_nonce;
 	var id = req.session.user_id;
 
+	var recipe_id = req.body.recipe_id;
 	var price = req.body.price;
 
 	gateway.customer.search(function(search) {
@@ -76,7 +77,21 @@ router.post('/checkout', function(req, res) {
 				return;
 			}
 			console.log(result);
-			res.sendFile(path.join(__dirname + '/../public/payment-redirect.html'));
+			models.Users.findOne({
+				where: {
+					id: user_id
+				}
+			}).then(function(user) {
+				models.Recipe.findOne({
+					where: {
+						id: recipe_id
+					}
+				}).then(function(recipe) {
+					user.addPaidRecipes(recipe).then(function() {
+						return res.sendFile(path.join(__dirname + '/../public/payment-redirect.html'));
+					});
+				})
+			})
 		});
 	}
 
