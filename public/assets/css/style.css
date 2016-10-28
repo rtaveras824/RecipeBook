@@ -145,17 +145,19 @@ a {
     overflow: hidden;
     text-align: center;
     bottom:0px;
+    background-color: mediumaquamarine;
  
    /* margin-top: 400px;*/
 }
 
 .footer p {
     margin: 0 auto;
+
 }
 #footercolor {
 	text-align: left;
 	color: black ;
-	background-color: powderblue;
+	background-color: mediumaquamarine;
     /*margin-top: 500px;*/
 }
 .jumbotron {
@@ -170,20 +172,22 @@ a {
 /*User Profile ******************/
 .profileButton { /*this styles where the buttons are inside the profile pic*/
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 10px;
 	float: right;
 	width: 33.33%;
-	height: 410px;
+	height: 420px;
 	background-color: darksalmon;
+	border-color: DarkSeaGreen;
+	border-width: 5px;
 }
 .btn { /*this gives margin between the buttons*/
-	margin-top: 10px;
+	margin-top: 2.5px;
 	margin-bottom: 5px;
 	height: -100px;
 }
 .helloUser {
 	 font-family: "Great Vibes", cursive; 
-	 text-decoration:underline;
+	 
 }
 .container-profile { /*this styles the profile info*/
 	color: white;
@@ -192,12 +196,14 @@ a {
 	width: 33.33%;
 	float: left;
 	height: 410px;
+	border-color: DarkSeaGreen !important;
+	border-width: 5px !important;
 }
 .profileButton { /*button info user*/
 	text-align: center;
 	margin-top: 45px;
 	float: right;
-	background-color: black;
+	background-color: darksalmon;
 	width: 33.33%;	
 	margin-right: 40px;
 	padding-top: 20px;	
@@ -207,12 +213,6 @@ a {
 	margin-bottom: 5px;
 	height: -100px;
 }
-.container-profile { /*profile info*/
-	background-color: Aqua ;
-	width: 245px;
-	height: 645px;
-	
-}
 
 #sign-out {
     float: right;
@@ -221,11 +221,4 @@ a {
 
 #user_buttons {
     margin: 10px;
-}
-
-#profile { /*profile info*/
-    background: black;
-    float: left;
-    width: 33.33%;
-    margin-left: 40px;
 }
