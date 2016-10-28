@@ -1,15 +1,20 @@
-<div id="profile" class="card card-container" id="profile_card">
-<!-- <h1>User Profile</h1> -->
-<h1>{{ user.dataValues.username }}</h1>
-<img src="{{ user.dataValues.image}}">
-<h3>About:  {{ user.dataValues.description }}</h3>
-<h3>Email: {{ user.dataValues.email }}</h3>
-</div>
 
+<div class="container-profile theInfo helloUser">
+<div id="profile" class="card card-container">
+<!-- <h1>User Profile</h1> -->
+<h1>Hello! {{ user.dataValues.username }}</h1> <br>
+<h3>About {{user.dataValues.username }}:  {{ user.dataValues.description }}</h3>
+<h3>You are loged in with the Email: {{ user.dataValues.email }}</h3>
+</div>
+</div>
+<!-- <div id="buttons" class="profileButton btn-group">
+{{#if user_id_match}}
+	<ul style="list-style-type:none" > -->
 <div id="buttons" class="profileButton container" class="btn-group">
 {{#if user_id_match}}
 	<ul style="list-style-type:none" class="theButtons">
-		<li><button id="followers" data-action="followers" class="btn btn-danger">Followers</button></li>
+		<li><button id="followers" data-action="followers" class="btn btn-danger">Followers</button>
+		</li>
 		<li><button id="edit_profile" data-action="edit_profile" class="btn btn-danger">Edit Profile</button>
  		</li>
  		<li><button id="add_recipe" data-action="add_recipe" class="btn btn-danger">Add Recipe</button>
@@ -20,23 +25,22 @@
 		</li>
 		<li><button id="favorite_recipes" data-action="favorite_recipes" class="btn btn-danger">Favorite Recipes</button>
 		</li>
-
 	
 {{/if}}
 
 {{#unless user_id_match}}
 	{{#if following}}
 		<form id="unfollow_form" action="" method="POST">
-			<button id="follow" data-action="follow" class="btn btn-danger">Unfollow This User</button>
+			<button id="follow" data-action="follow">Unfollow This User</button>
 		</form>
 	{{/if}}
 	{{#unless following}}
 		<form id="follow_form" action="" method="POST">
-			<button id="follow" data-action="follow" class="btn btn-danger">Follow This User</button>
+			<button id="follow" data-action="follow">Follow This User</button>
 		</form>
 	{{/unless}}
-{{/unless}}
-
+<!-- {{/unless}}
+ -->
 
 	<li><button id="recipes" data-action="recipes" class="btn btn-danger">Recipes</button>
 	</li>

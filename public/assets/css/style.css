@@ -6,8 +6,6 @@ body {
 	background-image: url(../images/backimg.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-
-
 }
 
 h1 {
@@ -29,22 +27,12 @@ a {
     background: -moz-linear-gradient(right, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to right, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* Standard syntax (must be last) */
 }
-
-}
 .logfrom {
 	padding-left: 100px;
 	color: white;
 	opacity: none;
 
 }
-/*button {
-    color: white;
-    padding: auto auto;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-  
-}*/
 #color {
 	margin-top: 200px;
 	width: 600px;
@@ -67,8 +55,6 @@ a {
     height:120px;
     margin-top: -15px;
 }
-
-
 /*Sign in and sign up*******************/
 .form-group {
 	align-content: center;
@@ -76,7 +62,7 @@ a {
 .card-container.card {
     max-width: 450px;
     padding: 40px 40px;
-    /*height: 300px;*/
+    height: 300px;
 }
 .btn {
     font-weight: 700;
@@ -109,6 +95,20 @@ a {
     border-radius: 50%;
 }
 /*Header and footer*******************/
+.curly { /*this is the header of the landing page*/
+	 color: #d54d7b; 
+	 font-family: "Great Vibes", cursive; 
+	 font-size: 165px; 
+	 line-height: 160px; 
+	 font-weight: normal; 
+	 text-align: center; 
+	 text-shadow: 0 1px 1px #fff;
+	/***********************/
+	font-style: italic; 
+	font-size: 900%;
+	margin: 50px auto;
+	/***********************/
+}
 .searchIt {
 	margin-left: 300px; 
 }
@@ -128,7 +128,8 @@ a {
 #main-container {
     min-height: 100%;
     height: 100%;
-    margin-top: 125px;
+    margin: -100px auto;
+
 
 }
 .push {
@@ -140,9 +141,11 @@ a {
     height: 80px;
     line-height: 80px;
     border-radius: 2.5%;
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     text-align: center;
+    bottom:0px;
+ 
    /* margin-top: 400px;*/
 }
 
@@ -152,13 +155,47 @@ a {
 #footercolor {
 	text-align: left;
 	color: black ;
-	background-color: purple;
-
+	background-color: powderblue;
+    /*margin-top: 500px;*/
 }
 .jumbotron {
-	background-color: blue !important;
+	background-color: blanchedalmond !important;
+	border-style: solid;
+	border-color: DarkSeaGreen;
+	border-width: 5px;
+	color: white;
+	font-family: "Great Vibes", cursive;
+	margin: auto auto;	
 }
 /*User Profile ******************/
+.profileButton { /*this styles where the buttons are inside the profile pic*/
+	text-align: center;
+	margin-top: 50px;
+	float: right;
+	width: 33.33%;
+	height: 410px;
+	background-color: darksalmon;
+}
+.btn { /*this gives margin between the buttons*/
+	margin-top: 10px;
+	margin-bottom: 5px;
+	height: -100px;
+}
+.helloUser {
+	 font-family: "Great Vibes", cursive; 
+	 text-decoration:underline;
+}
+.container-profile { /*this styles the profile info*/
+	color: white;
+	background-color: darksalmon ;
+	margin-top: 50px;
+	width: 33.33%;
+	float: left;
+	height: 410px;
+}
+
+
+
 .profileButton { /*button info user*/
 	text-align: center;
 	margin-top: 45px;
@@ -191,10 +228,6 @@ a {
 
 #profile { /*profile info*/
     background: black;
-}
-
-#profile_card {
-    height: 100%;
     float: left;
     width: 33.33%;
     margin-left: 40px;
