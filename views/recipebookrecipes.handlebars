@@ -30,7 +30,7 @@
 {{/each}}
 
 <form action="/recipebook/{{recipeBookId}}/addRecipe" method="POST">
-<select name>
+<select name="recipeId">
 	{{#each allrecipes}}
 		<option value={{dataValues.id}}>{{dataValues.name}}</option>
 	{{/each}}

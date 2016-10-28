@@ -35,11 +35,8 @@ router.get("/:recipeBookId", function(req,res){
 
 	models.RecipeBook.findOne({where:{id: recipeBookId}})
 	.then(function(book){
-		console.log(book);
-		console.log("boop");
 		book.getRecipeBookRecipes()
 		.then(function(recipes){
-			console.log(recipes);
 			models.Recipe.findAll({where:{UserId: req.session.user_id}})
 			.then(function(userrecipes){
 				res.render('recipebookrecipes', {arrayOfSearchResults: recipes, allrecipes: userrecipes, recipeBookId: recipeBookId })
@@ -55,10 +52,16 @@ router.put("/update", function(req, res){
 
 router.post("/:recipeBookId/addRecipe", function(req, res){
 	var recipe = req.body;
-	models.Recipe.findOne({where: {id:recipe.id}})
+	console.log(recipe);
+	console.log("-------")
+	models.Recipe.findOne({where: {id:recipe.recipeId}})
 	.then(function(recipe){
+		console.log(recipe);
+		console.log("-------")
 		models.RecipeBook.findOne({where:{id:req.params.recipeBookId}})
 		.then(function(book){
+			console.log(book);
+			console.log("-------")
 			book.addRecipeBookRecipes(recipe)
 			.then(function(){
 				res.redirect('/recipebook/'+req.params.recipeBookId)
