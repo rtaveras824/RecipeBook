@@ -6,9 +6,9 @@
 <h3>Email: {{ user.dataValues.email }}</h3>
 </div>
 
-<div id="buttons" class="profileButton" class="btn-group">
+<div id="buttons" class="profileButton container" class="btn-group">
 {{#if user_id_match}}
-	<ul style="list-style-type:none">
+	<ul style="list-style-type:none" class="theButtons">
 		<li><button id="followers" data-action="followers" class="btn btn-danger">Followers</button></li>
 		<li><button id="edit_profile" data-action="edit_profile" class="btn btn-danger">Edit Profile</button>
  		</li>
