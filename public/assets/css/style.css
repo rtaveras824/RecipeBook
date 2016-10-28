@@ -157,7 +157,7 @@ a {
 #footercolor {
 	text-align: left;
 	color: black ;
-	background-color: mediumaquamarine;
+	background-color: DarkSeaGreen;
     /*margin-top: 500px;*/
 }
 .jumbotron {
@@ -170,16 +170,7 @@ a {
 	margin-top: 200px !important;	
 }
 /*User Profile ******************/
-.profileButton { /*this styles where the buttons are inside the profile pic*/
-	text-align: center;
-	margin-top: 10px;
-	float: right;
-	width: 33.33%;
-	height: 420px;
-	background-color: darksalmon;
-	border-color: DarkSeaGreen;
-	border-width: 5px;
-}
+
 .btn { /*this gives margin between the buttons*/
 	margin-top: 2.5px;
 	margin-bottom: 5px;
@@ -196,8 +187,6 @@ a {
 	width: 33.33%;
 	float: left;
 	height: 410px;
-	border-color: DarkSeaGreen !important;
-	border-width: 5px !important;
 }
 .profileButton { /*button info user*/
 	text-align: center;
@@ -206,8 +195,9 @@ a {
 	background-color: darksalmon;
 	width: 33.33%;	
 	margin-right: 40px;
-	padding-top: 20px;	
-}
+	padding-top: 20px;
+	border-color: black;	
+} 
 
 .btn {
 	margin-bottom: 5px;
