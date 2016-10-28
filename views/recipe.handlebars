@@ -1,6 +1,6 @@
-<h1>User Recipes</h1>
+<div style="background-color:rgba(255, 255, 255, 0.5)">
+<h1>{{ recipe2.dataValues.name }}</h1>
 	<p>Author: <a href="/user/{{owner.dataValues.id}}">{{ owner.dataValues.username }}</a></p>
-	<p>{{ recipe2.dataValues.name }}</p>
 	<p>{{ recipe2.dataValues.description }}</p>
 	<img src="{{ recipe2.dataValues.image }}" />
 	<p id="ingredients">{{ recipe2.dataValues.ingredients }}</p>
@@ -10,7 +10,7 @@
 			<input type="submit" value="favorite">
 		</form>
 	{{/unless}}
-
+</div">
 <script type="text/javascript">
 	var ingredientsField = document.getElementById('ingredients');
 	var ingredients = ingredientsField.innerHTML;
