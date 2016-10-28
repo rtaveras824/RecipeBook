@@ -2,13 +2,6 @@ var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
 
-router.get("/", function(req,res){
-	var userId = req.session.user_id.
-
-	res.render("recipebook",{ 
-		user_id: req.session.user_id
-	})
-})
 
 router.get("/create_new_recipebook", function(req, res){
 
@@ -24,11 +17,12 @@ router.post("/create", function(req, res){
 	models.RecipeBook.create(new_recipebook)
 	.then(function(recipebook){
 		var userId = req.session.user_id;
+		console.log(userId)
 		models.User.findOne({where:{id: userId}})
 		.then(function(user){
 			user.addUserRecipeBook(recipebook)
 			.then(function(){
-				res.redirect('/user/'+userId)
+				res.redirect('/user/'+req.session.user_id+'/recipebooks')
 			})
 		})
 	})

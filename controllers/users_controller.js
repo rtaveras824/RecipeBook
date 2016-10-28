@@ -216,7 +216,7 @@ router.get('/:id/recipes', function(req ,res) {
 });
 
 
-router.get('/:id/recipebooks', function(req ,res) {
+router.get('/:id/recipebook', function(req ,res) {
 	var id = req.params.id;
 	var private;
 	console.log(id);
@@ -226,7 +226,7 @@ router.get('/:id/recipebooks', function(req ,res) {
 	models.RecipeBook.findAll({where:{UserId: id}})
 	.then(function(books){
 		console.log(books)
-		res.render('recipebook', {recipebook: books})
+		res.render('user_recipebook', {recipebook: books})
 
 	})
 	
