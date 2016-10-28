@@ -97,7 +97,8 @@ a {
 }
 /*Header and footer*******************/
 .curly { /*this is the header of the landing page*/
-	 color: #d54d7b; font-family: "Great Vibes", cursive; 
+	 color: #d54d7b; 
+	 font-family: "Great Vibes", cursive; 
 	 font-size: 165px; 
 	 line-height: 160px; 
 	 font-weight: normal; 
@@ -141,16 +142,14 @@ a {
     height: 80px;
     line-height: 80px;
     border-radius: 2.5%;
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     text-align: center;
     bottom:0px;
-    /*margin-top: 500px;*/
-}
-#footercolor {
-	text-align: center;
+    text-align: center;
 	color: black ;
-	/*background-color: purple;*/
+	background-color: powderblue !important;
+    /*margin-top: 500px;*/
 }
 .jumbotron {
 	background-color: blue !important;
@@ -161,21 +160,25 @@ a {
 	margin-top: 50px;
 	float: right;
 	width: 33.33%;
-	height: 470px;
-	background-color: white;
-
-
+	height: 410px;
+	background-color: darksalmon;
 }
 .btn { /*this gives margin between the buttons*/
+	margin-top: 10px;
 	margin-bottom: 5px;
 	height: -100px;
 }
+.helloUser {
+	 font-family: "Great Vibes", cursive; 
+	 text-decoration:underline;
+}
 .container-profile { /*this styles the profile info*/
-	background-color: white ;
+	color: white;
+	background-color: darksalmon ;
 	margin-top: 50px;
 	width: 33.33%;
 	float: left;
-	height: 470px;
+	height: 410px;
 }
 
 
