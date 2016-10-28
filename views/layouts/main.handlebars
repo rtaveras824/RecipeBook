@@ -17,56 +17,57 @@
 
 <body>
 	
-	
-	<nav class="navbar" id="main-header">
-  <div class="container-fluid">
-    <!-- Brand of our company -->
-    <div class="navbar-header">
-      <a class="navbar-brand brand" href="/">Recipe Book</a>
-    </div>
-      
-      <form class="navbar-form navbar-left" action="/search/results" method="GET">
-    <!-- Search button -->
-        <div class="form-group searchIt">
-          <input type="text" class="form-control" name="q" placeholder="Search">
-          <input type="hidden" name="start" value="0">
-          <select id="purchase_filter" name="purchase_filter">
-            <option value="all">All</option>
-            <option value="free">Free</option>
-            <option value="purchase">Purchase</option>
-          </select>
-          <select id="order_filter" name="order_filter">
-            <option value="none">None</option>
-            <option value="lowest">Lowest</option>
-            <option value="highest">Highest</option>
-          </select>
-          <input type="submit" class="btn btn-info" value="Search">
-        </div>
-      </form>
+	<div class="">
+		<nav class="navbar" id="main-header">
+	  <div class="container-fluid">
+	    <!-- Brand of our company -->
+	    <div class="navbar-header">
+	      <a class="navbar-brand brand" href="/">Recipe Book</a>
+	    </div>
+	      
+	      <form class="navbar-form navbar-left" action="/search/results" method="GET">
+	    <!-- Search button -->
+	        <div class="form-group searchIt">
+	          <input type="text" class="form-control" name="q" placeholder="Search">
+	          <input type="hidden" name="start" value="0">
+	          <select id="purchase_filter" name="purchase_filter">
+	            <option value="all">All</option>
+	            <option value="free">Free</option>
+	            <option value="purchase">Purchase</option>
+	          </select>
+	          <select id="order_filter" name="order_filter">
+	            <option value="none">None</option>
+	            <option value="lowest">Lowest</option>
+	            <option value="highest">Highest</option>
+	          </select>
+	          <input type="submit" class="btn btn-info" value="Search">
+	        </div>
+	      </form>
 
-    <div>
-    	<a href="/user/{{user_id}}">
-    	 <img id="profile-img" class="profile-img-main" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
-      </a>
-    </div>
-      
-  </div><!--  end of container-fluid -->
-</nav>	
+	    <div>
+	    	<a href="/user/{{user_id}}">
+	    	 <img id="profile-img" class="profile-img-main" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
+	      </a>
+	    </div>
+	      
+	  </div><!--  end of container-fluid -->
+	</nav>	
 
-<!-- ********************************************************************  -->
-<div class="container-fluid" id="main-container">
-	{{{ body }}}
-  <div class="push"></div>
-</div>
-
-
-<footer class="footer ">
-	<div class="container">
-		<p>&copy; copyright RecipeBook 2016</p>
+	<!-- ********************************************************************  -->
+	<div class="container-fluid" id="main-container">
+		{{{ body }}}
+	  <div class="push"></div>
 	</div>
-</footer>	
 
-<script src="/assets/javascript/app.js" type="text/javascript"></script>
+
+	<footer class="footer footercolor">
+		<div class="container">
+			<p>&copy; copyright RecipeBook 2016</p>
+		</div>
+	</footer>
+</div>	
+
+			<script src="/assets/javascript/app.js" type="text/javascript"></script>
 
 </body>
 

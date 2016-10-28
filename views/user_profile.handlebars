@@ -1,17 +1,26 @@
-<h1>User Profile</h1>
+<div class="container container-circle theInfo">
+<!-- <h1>User Profile</h1> -->
+<h1>Hello!: {{ user.dataValues.username }}</h1>
+<h3>About {{user.dataValues.username }}:  {{ user.dataValues.description }}</h3>
+<h3>You are loged in with the Email: {{ user.dataValues.email }}</h3>
+</div>
 
-<h2>Username: {{ user.dataValues.username }}</h2>
-<h3>Description: {{ user.dataValues.description }}</h3>
-<h3>Email: {{ user.dataValues.email }}</h3>
-
-<div id="buttons">
+<div id="buttons" class="profileButton" class="btn-group">
 {{#if user_id_match}}
-	<button id="followers" data-action="followers">Followers</button>
-	<button id="edit_profile" data-action="edit_profile">Edit Profile</button>
-	<button id="add_recipe" data-action="add_recipe">Add Recipe</button>
-	<button id="add_recipebook" data-action="add_recipebook">Add Recipe Book</button>
-	<button id="paid_recipes" data-action="paid_recipes">Paid Recipes</button>
-	<button id="favorite_recipes" data-action="favorite_recipes">Favorite Recipes</button>
+	<ul style="list-style-type:none">
+		<li><button id="followers" data-action="followers" class="btn btn-danger">Followers</button></li>
+		<li><button id="edit_profile" data-action="edit_profile" class="btn btn-danger">Edit Profile</button>
+ 		</li>
+ 		<li><button id="add_recipe" data-action="add_recipe" class="btn btn-danger">Add Recipe</button>
+		</li>
+		<li><button id="add_recipebook" data-action="add_recipebook" class="btn btn-danger">Add Recipe Book</button>
+		</li>
+		<li><button id="paid_recipes" data-action="paid_recipes" class="btn btn-danger">Paid Recipes</button>
+		</li>
+		<li><button id="favorite_recipes" data-action="favorite_recipes" class="btn btn-danger">Favorite Recipes</button>
+</li>
+
+	
 {{/if}}
 
 {{#unless user_id_match}}
@@ -27,8 +36,11 @@
 	{{/unless}}
 {{/unless}}
 
-	<button id="recipes" data-action="recipes">Recipes</button>
-	<button id="recipes_for_sale" data-action="recipes_for_sale">Recipes For Sale</button>
+	<li><button id="recipes" data-action="recipes" class="btn btn-danger">Recipes</button>
+	</li>
+	<li><button id="recipes_for_sale" data-action="recipes_for_sale" class="btn btn-danger">Recipes For Sale</button>
+	</li>
+	</ul>
 </div>
 
 <script type="text/javascript">

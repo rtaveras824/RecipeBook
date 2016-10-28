@@ -6,13 +6,30 @@ body {
 	background-image: url(../images/backimg.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+
+
 }
 
 h1 {
 	text-align: center;
 }
+h2 {
+	text-align: center;
+}
+h3 {
+	text-align: center;
+}
 a {
 	text-decoration: none !important;
+}
+.bgimgmain {
+	height: 100px;
+    background: -webkit-linear-gradient(left, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* Standard syntax (must be last) */
+}
+
 }
 .logfrom {
 	padding-left: 100px;
@@ -53,7 +70,7 @@ a {
 }
 
 
-/*Sign in and sign up*/
+/*Sign in and sign up*******************/
 .form-group {
 	align-content: center;
 }
@@ -92,7 +109,7 @@ a {
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
-/*Header and footer*/
+/*Header and footer*******************/
 .searchIt {
 	margin-left: 300px; 
 }
@@ -104,7 +121,7 @@ a {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    margin-right: : 200px;
+    margin-right: : 100px;
 }
 .brand {
 	margin-left: -300px;
@@ -112,27 +129,49 @@ a {
 #main-container {
     min-height: 100%;
     height: 100%;
-    margin: 0 auto -80px;
+    margin-top: 125px;
+
 }
 .push {
     height: 80px;
 }
 .footer {
+	display: block;
     width: 100%;
     height: 80px;
     line-height: 80px;
     border-radius: 2.5%;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+   /* margin-top: 400px;*/
 }
 #footercolor {
 	text-align: left;
-	color: black;
+	color: black ;
+	background-color: purple;
 
 }
-
-
 .jumbotron {
-	background-color: black !important;
+	background-color: blue !important;
 }
-
-
+/*User Profile ******************/
+.profileButton {
+	text-align: center;
+	margin-top: 140px;
+	float: right;	
+}
+.btn {
+	margin-bottom: 5px;
+	height: -100px;
+}
+.container-circle { /*it was a circle*/
+	background-color: Aqua ;
+	margin-top: -100px;
+	/*opacity: 0.7;
+	filter: alpha(opacity=70);	*/
+	width: 245px;
+	height: 645px;
+	float:left;
+}
 
