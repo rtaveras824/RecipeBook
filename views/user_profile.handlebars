@@ -18,7 +18,7 @@
 		<li><button id="paid_recipes" data-action="paid_recipes" class="btn btn-danger">Paid Recipes</button>
 		</li>
 		<li><button id="favorite_recipes" data-action="favorite_recipes" class="btn btn-danger">Favorite Recipes</button>
-</li>
+		</li>
 
 	
 {{/if}}
@@ -36,9 +36,12 @@
 	{{/unless}}
 {{/unless}}
 
+
 	<li><button id="recipes" data-action="recipes" class="btn btn-danger">Recipes</button>
 	</li>
 	<li><button id="recipes_for_sale" data-action="recipes_for_sale" class="btn btn-danger">Recipes For Sale</button>
+	</li>
+	<li><button id="recipebooks" data-action="recipebook">RecipeBooks</button>
 	</li>
 	</ul>
 </div>
@@ -90,6 +93,8 @@
 			case 'favorite_recipes':
 				console.log('favorite recipes');
 				window.location = currentUrl + '/favorites';
+			case 'recipebook': 
+				window.location = currentUrl+ '/recipebooks';
 			default:
 				console.log('Uh Oh');
 		}

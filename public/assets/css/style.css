@@ -146,6 +146,10 @@ a {
     text-align: center;
    /* margin-top: 400px;*/
 }
+
+.footer p {
+    margin: 0 auto;
+}
 #footercolor {
 	text-align: left;
 	color: black ;

@@ -1,11 +1,28 @@
 <h1>Edit User Profile</h1>
 
-<form id="edit_form" action="update?_method=PUT" method="POST">
-	<input type="text" name="description" value="{{user.dataValues.description}}"/>
-	<input type="text" name="email" value="{{user.dataValues.email}}"/>
-	<input type="text" name="image" value="{{user.dataValues.image}}"/>
-	<input type="submit" value="Submit" />
-</form>
+	<div class="container">
+
+		<form action = "update?_method=PUT" method = "POST">
+		<div class="card">
+			<div class="form-group">
+				<label>Email</label>
+				<input class="form-control" type="email" name="email" value="{{user.dataValues.email}}"> 
+
+			</div> 
+
+			<div class="form-group">
+				<label>Description:</label>
+				<textarea class="form-control" rows="5" name="description">{{user.dataValues.description}}</textarea>
+			</div>
+			<div class="form-group"> <!--Post your URL Image-->
+				<label>Image:</label>
+				<input class="form-control" type = "text" name = "image" value="{{user.dataValues.image}}">
+			</div>
+			
+			<button class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
+		</div> <!--End of div card -->
+		</form> <!--End of form -->
+	<div> <!--End of Container -->
 
 <script type="text/javascript">
 

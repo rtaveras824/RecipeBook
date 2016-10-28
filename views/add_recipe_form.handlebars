@@ -3,7 +3,8 @@
 		<div class="container">
 
 			<form action = "/recipe/create" method = "POST"> <!--Name of the recipe -->
-			<div class="card ">
+		<div class="card">
+
 				<div class="form-group">
 					<label>Name your recipe</label>
 					<input class="form-control" type = "text" name = "name"> 
@@ -12,7 +13,7 @@
 
 				<div class="form-group"> <!--Description of recipe-->
 					<label>Description:</label>
-					<input class="form-control" type = "text" name = "description">
+					<textarea class="form-control" type = "text" name = "description"></textarea>
 				</div>
 				<div class="form-group"> <!--Post your URL Image-->
 					<label>Image:</label>
@@ -28,20 +29,35 @@
     			</div>
   				<div class="form-group"> <!--Option to see if Recipe is Private or Public-->
   					<label>Private</label>
-						<select name="private">
-							<option value = "false">No</option>
-							<option value = "true">Yes</option>
+						<select id="private" name="private">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
 						</select>
 				</div>
 				<div class="form-group"> <!--Price of Private Recipe -->
 					<label>Price</label>
-					<input  class="form-control" type="text" name="price" value="0.00">
+					<input id="price" class="form-control" type="number" min="0.00" step="0.01" readonly=true name="price" value="0.00"/>
 				</div>
 
 				<button class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
 			</div> <!--End of div card -->
 			</form> <!--End of form -->
 		<div> <!--End of Container -->
+
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.js" integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA=" crossorigin="anonymous"></script>
+		<script>
+			$('#private').on("change", function(){
+
+				if (parseInt($('#private').val()) == false){
+						$('#price').val('0.00').attr('readonly',true)
+				}
+				else{
+						$('#price').val('').attr('readonly',false)
+				}
+
+			})
+			
+		</script>
 
 
 
