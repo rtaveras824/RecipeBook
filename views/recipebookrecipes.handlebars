@@ -1,3 +1,5 @@
+
+<div style="background-color:rgba(255, 255, 255, 0.5)">
 {{recipebook.name}}
 {{#each arrayOfSearchResults}}
 	{{#if price}}
@@ -29,11 +31,14 @@
 		{{/if}}
 {{/each}}
 
-<form action="/recipebook/{{recipeBookId}}/addRecipe" method="POST">
-<select name="recipeId">
-	{{#each allrecipes}}
-		<option value={{dataValues.id}}>{{dataValues.name}}</option>
-	{{/each}}
-</select>
-<input type="submit" value="Add Recipe"/>
+<form class="form-inline text-center" action="/recipebook/{{recipeBookId}}/addRecipe" method="POST">
+	<div class="form-group">
+	<label>Add Recipe</label>
+	<select class="form-control" name="recipeId">
+		{{#each allrecipes}}
+			<option value={{dataValues.id}}>{{dataValues.name}}</option>
+		{{/each}}
+	</select>
+	<input class="form-control" type="submit" value="Add Recipe"/>
 </form>
+</div>
