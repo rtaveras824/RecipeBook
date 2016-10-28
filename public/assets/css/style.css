@@ -36,7 +36,6 @@ a {
 	position: fixed;
 	margin-left: 350px;
 	border-radius: 10px;
-
 }
 #color{
 	background-color:  midnightblue;	
@@ -99,12 +98,12 @@ a {
 .profile-img-main {
 	width: 46px;
     height: 46px;
-    margin:  auto auto;
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    margin-right: : 200px;
+    /*margin-right: : 200px;*/
+    float: right;
 }
 .brand {
 	margin-left: -300px;
@@ -138,5 +137,12 @@ a {
 	background-color: black !important;
 }
 
+#sign-out {
+    float: right;
+    margin: 2px 0 0 10px;
+}
 
+#user_buttons {
+    margin: 10px;
+}
 

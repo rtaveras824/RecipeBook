@@ -90,7 +90,11 @@ router.get('/:id', function(req, res) {
 		User = profile_user;
 		if(req.session.user_id == profile_user.id) {
 			console.log('This is the owner');
-			res.render('user_profile', { user_id_match: true, user: profile_user });
+			res.render('user_profile', { 
+				user_id: req.session.user_id,
+				user_id_match: true, 
+				user: profile_user 
+			});
 		} else {
 			console.log('This is NOT the owner');
 			models.Users.findOne({
