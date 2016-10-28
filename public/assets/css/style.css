@@ -119,12 +119,8 @@ a {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-<<<<<<< HEAD
-    margin-right: : 100px;
-=======
     /*margin-right: : 200px;*/
     float: right;
->>>>>>> 3028e71395d5055b6e5b5349e674b516bf04ec6f
 }
 .brand {
 	margin-left: -300px;
@@ -166,7 +162,7 @@ a {
 .profileButton {
 	text-align: center;
 	margin-top: 140px;
-	float: right;	
+	/*float: right;	*/
 }
 .btn {
 	margin-bottom: 5px;
@@ -174,15 +170,13 @@ a {
 }
 .container-circle { /*it was a circle*/
 	background-color: Aqua ;
-	margin-top: -100px;
+	/*margin-top: -100px;*/
 	/*opacity: 0.7;
 	filter: alpha(opacity=70);	*/
 	width: 245px;
 	height: 645px;
 	float:left;
 }
-<<<<<<< HEAD
-=======
 
 #sign-out {
     float: right;
@@ -192,5 +186,7 @@ a {
 #user_buttons {
     margin: 10px;
 }
->>>>>>> 3028e71395d5055b6e5b5349e674b516bf04ec6f
 
+#profile {
+    background: black;
+}

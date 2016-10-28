@@ -1,4 +1,4 @@
-<div class="container container-circle theInfo">
+<div id="profile" class="card card-container">
 <!-- <h1>User Profile</h1> -->
 <h1>Hello!: {{ user.dataValues.username }}</h1>
 <h3>About {{user.dataValues.username }}:  {{ user.dataValues.description }}</h3>
@@ -41,7 +41,7 @@
 	</li>
 	<li><button id="recipes_for_sale" data-action="recipes_for_sale" class="btn btn-danger">Recipes For Sale</button>
 	</li>
-	<li><button id="recipebooks" data-action="recipebook">RecipeBooks</button>
+	<li><button id="recipebooks" data-action="recipebook" class="btn btn-danger">RecipeBooks</button>
 	</li>
 	</ul>
 </div>
@@ -97,7 +97,7 @@
 				break;
 			case 'recipebook': 
 
-				window.location = currentUrl+ '/recipebooks';
+				window.location = currentUrl+ '/recipebook';
 				break;
 
 			default:
