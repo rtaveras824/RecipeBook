@@ -35,11 +35,19 @@ router.get("/:recipeBookId", function(req,res){
 
 	models.RecipeBook.findOne({where:{id: recipeBookId}})
 	.then(function(book){
+		var match = (book.UserId == req.session.user_id)
 		book.getRecipeBookRecipes()
 		.then(function(recipes){
 			models.Recipe.findAll({where:{UserId: req.session.user_id}})
 			.then(function(userrecipes){
-				res.render('recipebookrecipes', {arrayOfSearchResults: recipes, allrecipes: userrecipes, recipeBookId: recipeBookId })
+				res.render('recipebookrecipes', 
+					{
+						usermatch: match,
+						bookname: book.name,
+						user_id: req.session.user_id,
+						arrayOfSearchResults: recipes, 
+						allrecipes: userrecipes, 
+						recipeBookId: recipeBookId })
 		})
 			})
 			
@@ -48,7 +56,7 @@ router.get("/:recipeBookId", function(req,res){
 
 router.put("/update", function(req, res){
 	var change = req.body;
-	
+
 })
 
 router.post("/:recipeBookId/addRecipe", function(req, res){

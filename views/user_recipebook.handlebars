@@ -1,14 +1,21 @@
-<h1>User RecipeBooks</h1>
+<div style="background-color:rgba(255, 255, 255, 0.5)">
+	<h1>User RecipeBooks</h1>
 
-{{#each recipebook}}
-	<a href="/recipebook/{{dataValues.id}}">
-		<p>{{ dataValues.name }}</p>
-	</a>
-	{{#if dataValues.private}}
-		<p>Private</p>
+	{{#each recipebook}}
+		<a href="/recipebook/{{dataValues.id}}">
+			<p>{{ dataValues.name }}</p>
+		</a>
+		{{#if dataValues.private}}
+			<p>Private</p>
+		{{/if}}
+		{{#unless dataValues.private}}
+			<p>Public</p>
+		{{/unless}}
+	{{/each}}
+
+	{{#if usermatch}}
+		<div class="text-center">
+		<button><a href="/recipebook/create_new_recipebook">Add new recipebook</a></button>
+		</div>
 	{{/if}}
-	{{#unless dataValues.private}}
-		<p>Public</p>
-	{{/unless}}
-{{/each}}
-<a href="/recipebook/create_new_recipebook">Add new recipebook</a>
+</div>

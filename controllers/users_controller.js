@@ -227,12 +227,18 @@ router.get('/:id/recipebook', function(req ,res) {
 	var private;
 	console.log(id);
 
-	
+	var match = (id == req.session.user_id)
 
 	models.RecipeBook.findAll({where:{UserId: id}})
 	.then(function(books){
+		
 		console.log(books)
-		res.render('user_recipebook', {recipebook: books, user_id: req.session.user_id})
+		res.render('user_recipebook', 
+			{
+				usermatch: match,
+				recipebook: books, 
+				user_id: req.session.user_id
+			})
 
 	})
 	
