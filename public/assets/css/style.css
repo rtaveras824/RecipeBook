@@ -41,7 +41,6 @@ a {
 	position: fixed;
 	margin-left: 350px;
 	border-radius: 10px;
-
 }
 #color{
 	background-color:  midnightblue;	
@@ -116,12 +115,12 @@ a {
 .profile-img-main {
 	width: 46px;
     height: 46px;
-    margin:  auto auto;
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    margin-right: : 100px;
+    /*margin-right: : 200px;*/
+    float: right;
 }
 .brand {
 	margin-left: -300px;
@@ -146,15 +145,25 @@ a {
     overflow: hidden;
     text-align: center;
     bottom:0px;
-    text-align: center;
+ 
+   /* margin-top: 400px;*/
+}
+
+.footer p {
+    margin: 0 auto;
+}
+#footercolor {
+	text-align: left;
+>>>>>>> master
 	color: black ;
-	background-color: powderblue !important;
+	background-color: powderblue;
     /*margin-top: 500px;*/
 }
 .jumbotron {
 	background-color: blue !important;
 }
 /*User Profile ******************/
+<<<<<<< HEAD
 .profileButton { /*this styles where the buttons are inside the profile pic*/
 	text-align: center;
 	margin-top: 50px;
@@ -182,3 +191,41 @@ a {
 }
 
 
+=======
+.profileButton { /*button info user*/
+	text-align: center;
+	margin-top: 45px;
+	float: right;
+	background-color: black;
+	width: 33.33%;	
+	margin-right: 40px;
+	padding-top: 20px;	
+}
+
+.btn {
+	margin-bottom: 5px;
+	height: -100px;
+}
+.container-circle { /*it was a circle*/
+	background-color: Aqua ;
+	width: 245px;
+	height: 645px;
+	
+}
+
+#sign-out {
+    float: right;
+    margin: 2px 0 0 10px;
+}
+
+#user_buttons {
+    margin: 10px;
+}
+
+#profile { /*profile info*/
+    background: black;
+    float: left;
+    width: 33.33%;
+    margin-left: 40px;
+}
+>>>>>>> master

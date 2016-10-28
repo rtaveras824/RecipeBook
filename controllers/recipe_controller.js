@@ -63,22 +63,31 @@ router.get('/:id',function(req, res){
 	}).then(function(recipe){
 		models.Users.findOne({
 			where: {
-				id: req.session.user_id
+				id: recipe.dataValues.UserId
 			}
-		}).then(function(user) {
-			user.getFavoriteRecipes().then(function(recipes) {
-				for(var i = 0; i < recipes.length; i++) {
-					if(recipes[i].dataValues.id == id) {
-						recipe.dataValues.favorited = true;
-					}
+		}).then(function(user_recipe_owner) {
+			console.log('This is user_recipe_owner', user_recipe_owner);
+			models.Users.findOne({
+				where: {
+					id: req.session.user_id
 				}
-				console.log(recipe);
-				res.render('recipe', {
-					user_id: req.session.user_id,
-					recipe2: recipe
+			}).then(function(user) {
+				user.getFavoriteRecipes().then(function(recipes) {
+					for(var i = 0; i < recipes.length; i++) {
+						if(recipes[i].dataValues.id == id) {
+							recipe.dataValues.favorited = true;
+						}
+					}
+					console.log(recipe);
+					res.render('recipe', {
+						user_id: req.session.user_id,
+						recipe2: recipe,
+						owner: user_recipe_owner
+					})
 				})
 			})
 		})
+		
 		
 	})
 	

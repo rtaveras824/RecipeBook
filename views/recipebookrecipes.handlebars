@@ -1,0 +1,39 @@
+{{recipebook.name}}
+{{#each arrayOfSearchResults}}
+	{{#if price}}
+		{{#unless paid}}
+			<h2>{{name}}</h2>
+		{{/unless}}
+		{{#if paid}}
+			<a href="/recipe/{{id}}">
+				<h2>{{name}}</h2>
+			</a>
+		{{/if}}
+	{{/if}}
+	{{#unless price}}
+		<a href="/recipe/{{id}}">
+			<h2>{{name}}</h2>
+		</a>
+	{{/unless}}
+		<p>{{description}}</p>
+		{{#unless paid}}
+			{{#if price}}
+				<form action="/payment" method="GET">
+					<input type="hidden" name="recipe_id" value="{{id}}" />
+					<input type="submit" value="{{price}}" />
+				</form>
+			{{/if}}
+		{{/unless}}
+		{{#if paid}}
+			<p>Paid</p>
+		{{/if}}
+{{/each}}
+
+<form action="/recipebook/{{recipeBookId}}/addRecipe" method="POST">
+<select name>
+	{{#each allrecipes}}
+		<option value={{dataValues.id}}>{{dataValues.name}}</option>
+	{{/each}}
+</select>
+<input type="submit" value="Add Recipe"/>
+</form>

@@ -1,13 +1,17 @@
+
 <div class="container-profile theInfo helloUser">
+<div id="profile" class="card card-container">
 <!-- <h1>User Profile</h1> -->
 <h1>Hello! {{ user.dataValues.username }}</h1> <br>
 <h3>About {{user.dataValues.username }}:  {{ user.dataValues.description }}</h3>
 <h3>You are loged in with the Email: {{ user.dataValues.email }}</h3>
 </div>
-
 <div id="buttons" class="profileButton btn-group">
 {{#if user_id_match}}
-	<ul style="list-style-type:none" >
+		<ul style="list-style-type:none" >
+	<div id="buttons" class="profileButton container" class="btn-group">
+{{#if user_id_match}}
+	<ul style="list-style-type:none" class="theButtons">
 		<li><button id="followers" data-action="followers" class="btn btn-danger">Followers</button></li>
 		<li><button id="edit_profile" data-action="edit_profile" class="btn btn-danger">Edit Profile</button>
  		</li>
@@ -18,7 +22,7 @@
 		<li><button id="paid_recipes" data-action="paid_recipes" class="btn btn-danger">Paid Recipes</button>
 		</li>
 		<li><button id="favorite_recipes" data-action="favorite_recipes" class="btn btn-danger">Favorite Recipes</button>
-</li>
+		</li>
 
 	
 {{/if}}
@@ -36,9 +40,12 @@
 	{{/unless}}
 {{/unless}}
 
+
 	<li><button id="recipes" data-action="recipes" class="btn btn-danger">Recipes</button>
 	</li>
 	<li><button id="recipes_for_sale" data-action="recipes_for_sale" class="btn btn-danger">Recipes For Sale</button>
+	</li>
+	<li><button id="recipebooks" data-action="recipebook" class="btn btn-danger">RecipeBooks</button>
 	</li>
 	</ul>
 </div>
@@ -87,9 +94,16 @@
 			case 'paid_recipes':
 				console.log('paid recipes');
 				window.location = currentUrl + '/paid-recipes';
+				break;
 			case 'favorite_recipes':
 				console.log('favorite recipes');
 				window.location = currentUrl + '/favorites';
+				break;
+			case 'recipebook': 
+
+				window.location = currentUrl+ '/recipebook';
+				break;
+
 			default:
 				console.log('Uh Oh');
 		}

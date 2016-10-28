@@ -31,7 +31,7 @@ router.get('/client_token', function(req, res) {
 	});
 });
 
-router.post('/checkout', function(req, res) {
+router.post('/recipe/checkout', function(req, res) {
 	// var nonceFromTheClient = req.body.payment_method_nonce;
 	var id = req.session.user_id;
 
@@ -88,6 +88,73 @@ router.post('/checkout', function(req, res) {
 					}
 				}).then(function(recipe) {
 					user.addPaidRecipes(recipe).then(function() {
+						return res.sendFile(path.join(__dirname + '/../public/payment-redirect.html'));
+					});
+				})
+			})
+		});
+	}
+
+	
+});
+
+router.post('/recipebook/checkout', function(req, res) {
+	// var nonceFromTheClient = req.body.payment_method_nonce;
+	var id = req.session.user_id;
+
+	var recipebook_id = req.body.recipebook_id;
+	var price = req.body.price;
+
+	gateway.customer.search(function(search) {
+		search.id().is(id);
+	}, function(err, response) {
+		if(err) {
+			console.log(err);
+		}
+		console.log("This is the response", response);
+
+		if (response.ids.length > 0) {
+			response.each(function(err, customer) {
+				console.log("This is the customer", customer);
+				transaction(id);
+			});
+		} else {
+			gateway.customer.create({
+				id: req.session.user_id,
+				firstName: req.session.username,
+				email: req.session.user_email
+			}, function(err, result) {
+				console.log(result);
+				transaction(id);
+			});
+		}
+	});
+	
+	function transaction(user_id) {
+		gateway.transaction.sale({
+			amount: price,
+			paymentMethodNonce: 'fake-valid-nonce',
+			customerId: user_id,
+			options: {
+				submitForSettlement: true
+			}
+		}, function(err, result) {
+			if(err) {
+				console.log(err);
+				return;
+			}
+			console.log(result);
+			models.Users.findOne({
+				where: {
+					id: user_id
+				}
+			}).then(function(user) {
+				models.Recipebook.findOne({
+					where: {
+						id: recipe_id
+					}
+				}).then(function(recipebook) {
+					user.addPaidRecipebooks(recipebook).then(function() {
 						return res.sendFile(path.join(__dirname + '/../public/payment-redirect.html'));
 					});
 				})

@@ -14,7 +14,7 @@ router.get('/', function (req, res){
 			console.log(recipes);
 			res.render('index', { 
 				user_id: req.session.user_id,
-				title: 'Main',
+				title: 'RecipeBook | A Marketplace to See and Sell Recipes and Recipe Books',
 				ogtitle: 'GET BACK TO WORK',
 				recipes_array: recipes
 			});
