@@ -27,22 +27,12 @@ a {
     background: -moz-linear-gradient(right, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to right, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* Standard syntax (must be last) */
 }
-
-}
 .logfrom {
 	padding-left: 100px;
 	color: white;
 	opacity: none;
 
 }
-/*button {
-    color: white;
-    padding: auto auto;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-  
-}*/
 #color {
 	margin-top: 200px;
 	width: 600px;
@@ -66,8 +56,6 @@ a {
     height:120px;
     margin-top: -15px;
 }
-
-
 /*Sign in and sign up*******************/
 .form-group {
 	align-content: center;
@@ -76,7 +64,6 @@ a {
     max-width: 450px;
     padding: 40px 40px;
     height: 300px;
-
 }
 .btn {
     font-weight: 700;
@@ -157,7 +144,8 @@ a {
     position: absolute;
     overflow: hidden;
     text-align: center;
-    margin-top: 500px;
+    bottom:0px;
+    /*margin-top: 500px;*/
 }
 #footercolor {
 	text-align: center;
@@ -168,22 +156,26 @@ a {
 	background-color: blue !important;
 }
 /*User Profile ******************/
-.profileButton {
+.profileButton { /*this styles where the buttons are inside the profile pic*/
 	text-align: center;
-	margin-top: 140px;
-	float: right;	
+	margin-top: 50px;
+	float: right;
+	width: 33.33%;
+	height: 470px;
+	background-color: white;
+
+
 }
-.btn {
+.btn { /*this gives margin between the buttons*/
 	margin-bottom: 5px;
 	height: -100px;
 }
-.container-circle { /*it was a circle*/
-	background-color: Aqua ;
-	margin-top: -100px;
-	/*opacity: 0.7;
-	filter: alpha(opacity=70);	*/
-	width: 245px;
-	height: 645px;
-	float:left;
+.container-profile { /*this styles the profile info*/
+	background-color: white ;
+	margin-top: 50px;
+	width: 33.33%;
+	float: left;
+	height: 470px;
 }
+
 
