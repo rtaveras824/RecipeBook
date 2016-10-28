@@ -29,6 +29,7 @@
 
 	<button id="recipes" data-action="recipes">Recipes</button>
 	<button id="recipes_for_sale" data-action="recipes_for_sale">Recipes For Sale</button>
+	<button id="recipebooks" data-action="recipebook">RecipeBooks</button>
 </div>
 
 <script type="text/javascript">
@@ -78,6 +79,8 @@
 			case 'favorite_recipes':
 				console.log('favorite recipes');
 				window.location = currentUrl + '/favorites';
+			case 'recipebook': 
+				window.location = currentUrl+ '/recipebooks';
 			default:
 				console.log('Uh Oh');
 		}

@@ -123,6 +123,10 @@ a {
     line-height: 80px;
     border-radius: 2.5%;
 }
+
+.footer p {
+    margin: 0 auto;
+}
 #footercolor {
 	text-align: left;
 	color: black;
