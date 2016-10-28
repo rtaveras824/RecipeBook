@@ -1,16 +1,14 @@
 
-<div class="container-profile theInfo helloUser">
-<div id="profile" class="card card-container">
+<div class=" helloUser">
+<div id="profile" class="">
 <!-- <h1>User Profile</h1> -->
 <h1>Hello! {{ user.dataValues.username }}</h1> <br>
 <h3>About {{user.dataValues.username }}:  {{ user.dataValues.description }}</h3>
 <h3>You are loged in with the Email: {{ user.dataValues.email }}</h3>
 </div>
 </div>
-<!-- <div id="buttons" class="profileButton btn-group">
-{{#if user_id_match}}
-	<ul style="list-style-type:none" > -->
 <div id="buttons" class="profileButton container" class="btn-group">
+
 {{#if user_id_match}}
 	<ul style="list-style-type:none" class="theButtons">
 		<li><button id="followers" data-action="followers" class="btn btn-danger">Followers</button>
@@ -33,14 +31,15 @@
 		<form id="unfollow_form" action="" method="POST">
 			<button id="follow" data-action="follow">Unfollow This User</button>
 		</form>
+
 	{{/if}}
 	{{#unless following}}
 		<form id="follow_form" action="" method="POST">
 			<button id="follow" data-action="follow">Follow This User</button>
 		</form>
 	{{/unless}}
-<!-- {{/unless}}
- -->
+{{/unless}}
+
 
 	<li><button id="recipes" data-action="recipes" class="btn btn-danger">Recipes</button>
 	</li>

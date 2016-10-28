@@ -165,7 +165,7 @@ a {
 	border-width: 5px;
 	color: white;
 	font-family: "Great Vibes", cursive;
-	margin: auto auto;	
+	margin-top: 200px !important;	
 }
 /*User Profile ******************/
 .profileButton { /*this styles where the buttons are inside the profile pic*/
@@ -193,9 +193,6 @@ a {
 	float: left;
 	height: 410px;
 }
-
-
-
 .profileButton { /*button info user*/
 	text-align: center;
 	margin-top: 45px;
@@ -210,7 +207,7 @@ a {
 	margin-bottom: 5px;
 	height: -100px;
 }
-.container-circle { /*it was a circle*/
+.container-profile { /*profile info*/
 	background-color: Aqua ;
 	width: 245px;
 	height: 645px;
