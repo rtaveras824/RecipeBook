@@ -53,7 +53,6 @@ a {
 	position: fixed;
 	margin-left: 350px;
 	border-radius: 10px;
-
 }
 #color{
 	background-color:  midnightblue;	
@@ -116,12 +115,16 @@ a {
 .profile-img-main {
 	width: 46px;
     height: 46px;
-    margin:  auto auto;
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
+<<<<<<< HEAD
     margin-right: : 100px;
+=======
+    /*margin-right: : 200px;*/
+    float: right;
+>>>>>>> 3028e71395d5055b6e5b5349e674b516bf04ec6f
 }
 .brand {
 	margin-left: -300px;
@@ -178,4 +181,16 @@ a {
 	height: 645px;
 	float:left;
 }
+<<<<<<< HEAD
+=======
+
+#sign-out {
+    float: right;
+    margin: 2px 0 0 10px;
+}
+
+#user_buttons {
+    margin: 10px;
+}
+>>>>>>> 3028e71395d5055b6e5b5349e674b516bf04ec6f
 

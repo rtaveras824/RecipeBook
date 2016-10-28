@@ -17,6 +17,7 @@
 
 <body>
 	
+<<<<<<< HEAD
 	<div class="">
 		<nav class="navbar" id="main-header">
 	  <div class="container-fluid">
@@ -43,6 +44,47 @@
 	          <input type="submit" class="btn btn-info" value="Search">
 	        </div>
 	      </form>
+=======
+	
+	<nav class="navbar" id="main-header">
+  <div class="container-fluid">
+    <!-- Brand of our company -->
+    <div class="navbar-header">
+      <a class="navbar-brand brand" href="/">Recipe Book</a>
+    </div>
+      
+      <form class="navbar-form navbar-left" action="/search/results" method="GET">
+    <!-- Search button -->
+        <div class="form-group searchIt">
+          <input type="text" class="form-control" name="q" placeholder="Search">
+          <input type="hidden" name="start" value="0">
+          <select id="purchase_filter" class="form-control" name="purchase_filter">
+            <option value="all">All</option>
+            <option value="free">Free</option>
+            <option value="purchase">Purchase</option>
+          </select>
+          <select id="order_filter" class="form-control" name="order_filter">
+            <option value="none">None</option>
+            <option value="lowest">Lowest</option>
+            <option value="highest">Highest</option>
+          </select>
+          <input type="submit" class="btn btn-info" value="Search">
+        </div>
+      </form>
+
+    <div id="user_buttons">
+      <a href="/user/sign-out" id="sign-out" class="btn btn-default">Sign Out</a>
+    	<a href="/user/{{user_id}}">
+    	 <img id="profile-img" class="profile-img-main" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
+      </a>
+
+    </div>
+      
+  </div><!--  end of container-fluid -->
+</nav>	
+
+<!-- ********************************************************************  -->
+>>>>>>> 3028e71395d5055b6e5b5349e674b516bf04ec6f
 
 	    <div>
 	    	<a href="/user/{{user_id}}">

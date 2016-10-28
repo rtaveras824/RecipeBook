@@ -90,7 +90,13 @@ router.get('/:id', function(req, res) {
 		User = profile_user;
 		if(req.session.user_id == profile_user.id) {
 			console.log('This is the owner');
-			res.render('user_profile', { user_id_match: true, user: profile_user });
+
+			res.render('user_profile', { 
+				user_id: req.session.user_id,
+				user_id_match: true, 
+				user: profile_user 
+			});
+
 		} else {
 			console.log('This is NOT the owner');
 			models.Users.findOne({
@@ -226,7 +232,7 @@ router.get('/:id/recipebook', function(req ,res) {
 	models.RecipeBook.findAll({where:{UserId: id}})
 	.then(function(books){
 		console.log(books)
-		res.render('user_recipebook', {recipebook: books})
+		res.render('user_recipebook', {recipebook: books, user_id: req.session.user_id})
 
 	})
 	
