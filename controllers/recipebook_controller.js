@@ -47,21 +47,22 @@ router.get("/:recipeBookId", function(req,res){
 })
 
 router.put("/update", function(req, res){
-
+	var change = req.body;
+	
 })
 
 router.post("/:recipeBookId/addRecipe", function(req, res){
 	var recipe = req.body;
-	console.log(recipe);
-	console.log("-------")
+	// console.log(recipe);
+	// console.log("-------")
 	models.Recipe.findOne({where: {id:recipe.recipeId}})
 	.then(function(recipe){
-		console.log(recipe);
-		console.log("-------")
+		// console.log(recipe);
+		// console.log("-------")
 		models.RecipeBook.findOne({where:{id:req.params.recipeBookId}})
 		.then(function(book){
-			console.log(book);
-			console.log("-------")
+			// console.log(book);
+			// console.log("-------")
 			book.addRecipeBookRecipes(recipe)
 			.then(function(){
 				res.redirect('/recipebook/'+req.params.recipeBookId)

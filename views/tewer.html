@@ -1,0 +1,109 @@
+<div id="profile" class="card card-container" id="profile_card">
+<!-- <h1>User Profile</h1> -->
+<h1>{{ user.dataValues.username }}</h1>
+<img src="{{ user.dataValues.image}}">
+<h3>About:  {{ user.dataValues.description }}</h3>
+<h3>Email: {{ user.dataValues.email }}</h3>
+</div>
+
+<div id="buttons" class="profileButton container" class="btn-group">
+{{#if user_id_match}}
+	<ul style="list-style-type:none" class="theButtons">
+		<li><button id="followers" data-action="followers" class="btn btn-danger">Followers</button></li>
+		<li><button id="edit_profile" data-action="edit_profile" class="btn btn-danger">Edit Profile</button>
+ 		</li>
+ 		<li><button id="add_recipe" data-action="add_recipe" class="btn btn-danger">Add Recipe</button>
+		</li>
+		<li><button id="add_recipebook" data-action="add_recipebook" class="btn btn-danger">Add Recipe Book</button>
+		</li>
+		<li><button id="paid_recipes" data-action="paid_recipes" class="btn btn-danger">Paid Recipes</button>
+		</li>
+		<li><button id="favorite_recipes" data-action="favorite_recipes" class="btn btn-danger">Favorite Recipes</button>
+		</li>
+
+	
+{{/if}}
+
+{{#unless user_id_match}}
+	{{#if following}}
+		<form id="unfollow_form" action="" method="POST">
+			<button id="follow" data-action="follow" class="btn btn-danger">Unfollow This User</button>
+		</form>
+	{{/if}}
+	{{#unless following}}
+		<form id="follow_form" action="" method="POST">
+			<button id="follow" data-action="follow" class="btn btn-danger">Follow This User</button>
+		</form>
+	{{/unless}}
+{{/unless}}
+
+
+	<li><button id="recipes" data-action="recipes" class="btn btn-danger">Recipes</button>
+	</li>
+	<li><button id="recipes_for_sale" data-action="recipes_for_sale" class="btn btn-danger">Recipes For Sale</button>
+	</li>
+	<li><button id="recipebooks" data-action="recipebook" class="btn btn-danger">RecipeBooks</button>
+	</li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	var currentUrl = window.location.href;
+	console.log(currentUrl);
+
+	var follow_form = document.getElementById('follow_form');
+	var unfollow_form = document.getElementById('unfollow_form');
+
+	if(follow_form !== null) {
+		follow_form.action += '/follow';
+	} else if (unfollow_form !== null) {
+		unfollow_form.action += '/unfollow';
+	}
+
+	var buttons = document.getElementById('buttons');
+	buttons.addEventListener('click', function(event) {
+		buttonClicked = event.target.dataset.action;
+		switch(buttonClicked) {
+			case 'followers':
+				console.log('followers');
+				window.location = currentUrl + '/followers';
+				break;
+			case 'edit_profile':
+				console.log('edit profile');
+				window.location = currentUrl + '/edit-profile';
+				break;
+			case 'recipes':
+				console.log('recipes');
+				window.location = currentUrl + '/recipes';
+				break;
+			case 'recipes_for_sale':
+				console.log('recipes for sale');
+				window.location = currentUrl + '/recipes-for-sale';
+				break;
+			case 'add_recipe':
+				console.log('add recipe');
+				window.location = window.location.origin + '/recipe/add';
+				break;
+			case 'add_recipebook':
+				console.log('add recipebook');
+				window.location = window.location.origin + '/recipebook/create_new_recipebook';
+				break;
+			case 'paid_recipes':
+				console.log('paid recipes');
+				window.location = currentUrl + '/paid-recipes';
+				break;
+			case 'favorite_recipes':
+				console.log('favorite recipes');
+				window.location = currentUrl + '/favorites';
+				break;
+			case 'recipebook': 
+
+				window.location = currentUrl+ '/recipebook';
+				break;
+
+			default:
+				console.log('Uh Oh');
+		}
+	});
+
+</script>
