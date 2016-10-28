@@ -159,23 +159,25 @@ a {
 	background-color: blue !important;
 }
 /*User Profile ******************/
-.profileButton {
+.profileButton { /*button info user*/
 	text-align: center;
-	margin-top: 140px;
-	/*float: right;	*/
+	margin-top: 45px;
+	float: right;
+	background-color: black;
+	width: 33.33%;	
+	margin-right: 40px;
+	padding-top: 20px;	
 }
+
 .btn {
 	margin-bottom: 5px;
 	height: -100px;
 }
 .container-circle { /*it was a circle*/
 	background-color: Aqua ;
-	/*margin-top: -100px;*/
-	/*opacity: 0.7;
-	filter: alpha(opacity=70);	*/
 	width: 245px;
 	height: 645px;
-	float:left;
+	
 }
 
 #sign-out {
@@ -187,6 +189,9 @@ a {
     margin: 10px;
 }
 
-#profile {
+#profile { /*profile info*/
     background: black;
+    float: left;
+    width: 33.33%;
+    margin-left: 40px;
 }
