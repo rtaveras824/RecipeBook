@@ -148,7 +148,7 @@ a {
 }
 
 .footer p {
-    margin: 0 auto;
+    margin: 0 ;
 
 }
 .footercolor {
@@ -180,27 +180,29 @@ a {
 .container-profile { /*this styles the profile info*/
 	color: white;
 	background-color: darksalmon ;
-	margin-top: 50px;
-	width: 33.33%;
+	/*margin-top: 50px;*/
+	/*width: 33.33%;*/
 	float: left;
-	height: 410px;
+	/*height: 410px;*/
 	border-style: inset;
 	border-color: #c19985 ;
 	border-width: 5px;
+	margin-bottom: 15px;
 
 }
 .profileButton { /*button info user*/
 	text-align: center;
-	margin-top: 45px;
+	/*margin-top: 45px;*/
 	float: right;
 	background-color: darksalmon;
-	width: 33.33%;	
-	margin-right: 40px;
+
+	/*margin-right: 40px;*/
 	padding-top: 20px;
 	border-style: inset;
 	border-color: #c19985 ;
 	border-width: 5px;
-	height: auto;
+	margin-bottom: 15px;
+	/*height: auto;*/
 
 	
 } 
