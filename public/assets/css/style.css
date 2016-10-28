@@ -76,7 +76,7 @@ a {
 .card-container.card {
     max-width: 450px;
     padding: 40px 40px;
-    height: 300px;
+    /*height: 300px;*/
 }
 .btn {
     font-weight: 700;
@@ -189,4 +189,8 @@ a {
 
 #profile {
     background: black;
+}
+
+#profile_card {
+    height: 100%;
 }

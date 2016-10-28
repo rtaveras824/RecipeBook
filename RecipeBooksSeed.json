@@ -1,0 +1,4 @@
+[{"id":4, "name":"Family Recipe Book", "private":0, "price":0.0, "createdAt":"2016-10-28 03:12:07", "updatedAt":"2016-10-28 03:12:08", "UserId":1},
+ {"id":5, "name":"HoganBeard's Wrestling Recipes", "private":0, "price":0.0, "createdAt":"2016-10-28 05:06:46", "updatedAt":"2016-10-28 05:06:46", "UserId":1},
+ {"id":6, "name":"Fast and Furious Family Recipes", "private":0, "price":0.0, "createdAt":"2016-10-28 05:09:10", "updatedAt":"2016-10-28 05:09:11", "UserId":2},
+ {"id":7, "name":"Orc Cookbook", "private":0, "price":0.0, "createdAt":"2016-10-28 05:10:03", "updatedAt":"2016-10-28 05:10:03", "UserId":3}]

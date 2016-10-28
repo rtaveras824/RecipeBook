@@ -17,7 +17,7 @@ module.exports = {
         defaultValue: false
       },
       price:{
-        type: Sequelize.FLOAT,
+        type: Sequelize.DECIMAL(10, 2),
         defaultValue: 0.00
       },
       createdAt: {

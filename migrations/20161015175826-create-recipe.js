@@ -19,17 +19,17 @@ module.exports = {
         type: Sequelize.STRING
       },
       ingredients: {
-        type: Sequelize.JSON
+        type: Sequelize.TEXT
       },
       steps: {
-        type: Sequelize.JSON
+        type: Sequelize.TEXT
       },
       private:{
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
       price:{
-        type: Sequelize.FLOAT,
+        type: Sequelize.DECIMAL(10, 2),
         defaultValue: 0.00
       },
       createdAt: {

@@ -20,7 +20,10 @@ router.get('/', function(req, res) {
 		}
 	}).then(function(recipe) {
 		console.log('recipe', recipe);
-		res.render('payment', { recipe: recipe });
+		res.render('payment', {
+			user_id: req.session.user_id, 
+			recipe: recipe 
+		});
 	});
 });
 

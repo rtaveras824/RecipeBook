@@ -39,7 +39,7 @@ router.post('/login', function(req, res) {
 				req.session.username = profile_user.username;
 				req.session.user_id = profile_user.id;
 				req.session.user_email = profile_user.email;
-				res.redirect('/user/' + profile_user.id);
+				res.redirect('/');
 			} else {
 				res.redirect('/user/sign-in');
 			}
@@ -81,7 +81,7 @@ router.get('/:id', function(req, res) {
 	var isFollowing;
 
 	models.Users.findOne({
-		attributes: ['id', 'username', 'email', 'description'],
+		attributes: ['id', 'username', 'email', 'description', 'image'],
 		where: {
 			id: id
 		}
