@@ -14,38 +14,33 @@ clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); margin-left: -39px; marg
   <h2>Have Fun and Cook</h2>
   <h4>What we offer</h4>
   <br>
-  <div class="row slideanim">
+  <div id="buttons" class="row slideanim">
     <div class="col-sm-4">
       <span  ></span>
-      <button id="followers" data-action="followers"><h4>Followers</h4></button>
-      <p>Check how is following you.</p>
+      <a id="followers" data-action="followers"><h4>Followers</h4></a>
+      <p>Check who is following you.</p>
     </div>
     <div class="col-sm-4">
-      <span id="edit_profile" data-action="edit_profile"></span>
-      <h4>Edit Profile</h4>
+      <a id="edit_profile" data-action="edit_profile"><h4>Edit Profile</h4></a>
       <p>You can make all the changes that you want!.</p>
     </div>
     <div class="col-sm-4">
-      <span id="add_recipe" data-action="add_recipe"></span>
-      <h4>Add Recipe</h4>
+      <a id="add_recipe" data-action="add_recipe"><h4>Add Recipe</h4></a>
       <p>You have the tools to right down your recipes.</p>
     </div>
   </div>
   <br><br>
   <div class="row slideanim">
     <div class="col-sm-4">
-      <span id="add_recipebook" data-action="add_recipebook"></span>
-      <h4>Add Recipe Book</h4>
+      <a id="add_recipebook" data-action="add_recipebook"><h4>Add Recipe Book</h4></a>
       <p>All of your family cooking history in one click</p>
     </div>
     <div class="col-sm-4">
-      <span id="paid_recipes" data-action="paid_recipes"></span>
-      <h4>Paid Recipes</h4>
+      <a id="paid_recipes" data-action="paid_recipes"><h4>Paid Recipes</h4></a>
       <p>Check the recipies you have paid for.</p>
     </div>
     <div class="col-sm-4">
-      <span id="favorite_recipes" data-action="favorite_recipes"></span>
-      <h4 style="color:#303030;">Favorite Recipes</h4>
+      <a id="favorite_recipes" data-action="favorite_recipes"><h4 style="color:#303030;">Favorite Recipes</h4></a>
       <p>The recipes that you love right where they belong</p>
     </div>
     {{/if}}
@@ -53,31 +48,38 @@ clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); margin-left: -39px; marg
   {{#unless user_id_match}}
   {{#if following}}
   	<div class="col-sm-4">
-      <span id="unfollow_form" action="" method="POST"></span>
-      <h4>Unfollow</h4>
-      <p>Unfollow them if you want to.</p>
+      <form id="unfollow_form" action="" method="POST">
+      	<input type="submit" value="Unfollow">
+     	<p>Unfollow them if you want to.</p>
+      </form>
+      
     </div>
     {{/if}}
     {{#unless following}}
 
     <div class="col-sm-4">
-      <span id="follow_form" action="" method="POST"></span>
-      <h4>Follow</h4>
-      <p>foollow them if you want to.</p>
+      <form id="follow_form" action="" method="POST">
+      	<input type="submit" value="Follow">
+		<p>follow them if you want to.</p>
+      </form>
+      
     </div>
     {{/unless}}
     {{/unless}}
 
     <div class="col-sm-4">
-      <span id="recipes" data-action="recipes"></span>
-      <h4>Recipes</h4>
+      <a id="recipes" data-action="recipes"><h4>Recipes</h4></a>
       <p>Check all recipes.</p>
     </div>
 
     <div class="col-sm-4">
-      <span id="recipebooks" data-action="recipebook"></span>
-      <h4>RecipeBooks</h4>
+      <a id="recipebooks" data-action="recipebook"><h4>RecipeBooks</h4></a>
       <p>Check all recipes Books.</p>
+    </div>
+
+    <div class="col-sm-4">
+      <a id="recipes_for_sale" data-action="recipes_for_sale"><h4>Recipes For Sale</h4></a>
+      <p>Check the recipes that are for sale.</p>
     </div>
 
 </div>
@@ -99,51 +101,61 @@ clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); margin-left: -39px; marg
 	} else if (unfollow_form !== null) {
 		unfollow_form.action += '/unfollow';
 	}
+	
+	document.getElementById('followers').href = currentUrl + '/followers';
+	document.getElementById('edit_profile').href = currentUrl + '/edit-profile';
+	document.getElementById('recipes').href = currentUrl + '/recipes';
+	document.getElementById('recipes_for_sale').href = currentUrl + '/recipes-for-sale';
+	document.getElementById('add_recipe').href = window.location.origin + '/recipe/add';
+	document.getElementById('add_recipebook').href = '/recipebook/create_new_recipebook';
+	document.getElementById('paid_recipes').href = currentUrl + '/paid-recipes';
+	document.getElementById('favorite_recipes').href = currentUrl + '/favorites';
+	document.getElementById('recipebooks').href = currentUrl + '/recipebook';
 
-	var buttons = document.getElementById('buttons');
-	buttons.addEventListener('click', function(event) {
-		buttonClicked = event.target.dataset.action;
-		switch(buttonClicked) {
-			case 'followers':
-				console.log('followers');
-				window.location = currentUrl + '/followers';
-				break;
-			case 'edit_profile':
-				console.log('edit profile');
-				window.location = currentUrl + '/edit-profile';
-				break;
-			case 'recipes':
-				console.log('recipes');
-				window.location = currentUrl + '/recipes';
-				break;
-			case 'recipes_for_sale':
-				console.log('recipes for sale');
-				window.location = currentUrl + '/recipes-for-sale';
-				break;
-			case 'add_recipe':
-				console.log('add recipe');
-				window.location = window.location.origin + '/recipe/add';
-				break;
-			case 'add_recipebook':
-				console.log('add recipebook');
-				window.location = window.location.origin + '/recipebook/create_new_recipebook';
-				break;
-			case 'paid_recipes':
-				console.log('paid recipes');
-				window.location = currentUrl + '/paid-recipes';
-				break;
-			case 'favorite_recipes':
-				console.log('favorite recipes');
-				window.location = currentUrl + '/favorites';
-				break;
-			case 'recipebook': 
+	// var buttons = document.getElementById('buttons');
+	// buttons.addEventListener('click', function(event) {
+	// 	buttonClicked = event.target.dataset.action;
+	// 	switch(buttonClicked) {
+	// 		case 'followers':
+	// 			console.log('followers');
+	// 			window.location = currentUrl + '/followers';
+	// 			break;
+	// 		case 'edit_profile':
+	// 			console.log('edit profile');
+	// 			window.location = currentUrl + '/edit-profile';
+	// 			break;
+	// 		case 'recipes':
+	// 			console.log('recipes');
+	// 			window.location = currentUrl + '/recipes';
+	// 			break;
+	// 		case 'recipes_for_sale':
+	// 			console.log('recipes for sale');
+	// 			window.location = currentUrl + '/recipes-for-sale';
+	// 			break;
+	// 		case 'add_recipe':
+	// 			console.log('add recipe');
+	// 			window.location = window.location.origin + '/recipe/add';
+	// 			break;
+	// 		case 'add_recipebook':
+	// 			console.log('add recipebook');
+	// 			window.location = window.location.origin + '/recipebook/create_new_recipebook';
+	// 			break;
+	// 		case 'paid_recipes':
+	// 			console.log('paid recipes');
+	// 			window.location = currentUrl + '/paid-recipes';
+	// 			break;
+	// 		case 'favorite_recipes':
+	// 			console.log('favorite recipes');
+	// 			window.location = currentUrl + '/favorites';
+	// 			break;
+	// 		case 'recipebook': 
 
-				window.location = currentUrl+ '/recipebook';
-				break;
+	// 			window.location = currentUrl+ '/recipebook';
+	// 			break;
 
-			default:
-				console.log('Uh Oh');
-		}
-	});
+	// 		default:
+	// 			console.log('Uh Oh');
+	// 	}
+	// });
 
 </script>
