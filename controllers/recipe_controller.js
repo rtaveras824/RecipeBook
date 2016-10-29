@@ -54,9 +54,25 @@ router.post('/create',function(req, res){
 		});
 	});
 });
+
+// router.get('/:id', function(req, res){
+
+// 	var recipeId = req.params.id;
+// 	console.log("Id is", recipeId);
+// 	models.Recipe.findOne({
+// 		where:{
+// 			id:recipeId,
+// 		}
+// 	})
+// 	.then(function(recipe){
+// 		console.log("Recipe", recipe);
+// 	})	
+// })
+
 router.get('/:id',function(req, res){
 
 	var id = req.params.id;
+	console.log(req.params);
 	console.log("HOW ABOUT HERE",id);
 	models.Recipe.findOne({
 		where: {
@@ -76,21 +92,31 @@ router.get('/:id',function(req, res){
 					id: req.session.user_id
 				}
 			}).then(function(user) {
-				
-				user.getFavoriteRecipes().then(function(recipes) {
-					for(var i = 0; i < recipes.length; i++) {
-						if(recipes[i].dataValues.id == id) {
-							console.log("OR WAS IT HERE?",id);
-							recipe.dataValues.favorited = true;
+				console.log("IS USER?", user);
+				if(user != null){
+					user.getFavoriteRecipes().then(function(recipes) {
+						for(var i = 0; i < recipes.length; i++) {
+							if(recipes[i].dataValues.id == id) {
+								console.log("OR WAS IT HERE?",id);
+								recipe.dataValues.favorited = true;
+							}
 						}
-					}
-					console.log(recipe);
+						console.log(recipe);
+						// res.render('recipe', {
+						// 	user_id: req.session.user_id,
+						// 	recipe2: recipe,
+						// 	owner: user_recipe_owner
+						// })
+					})
+				}
+				else{
 					res.render('recipe', {
-						user_id: req.session.user_id,
+						user_id: 0,
 						recipe2: recipe,
 						owner: user_recipe_owner
 					})
-				})
+
+				}
 			})
 		})
 		
