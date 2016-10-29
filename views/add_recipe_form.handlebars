@@ -62,6 +62,7 @@
 			//error handeler
 			$('#submit').on('click', function(){
 				var str = $('#image').val()
+				var error = false;
 				$('#imagediv').removeClass("has-error")
 				$('#namediv').removeClass("has-error")
 				$('#ingredientsdiv').removeClass("has-error")
@@ -75,28 +76,37 @@
 				if($("#recipename").val() == ""){
 					$('#namediv').addClass("has-error")
 					$('#namehelp').text("need valid name")
-					$('#submithelp').text("There seems to be an error on the form.")
-					return false;
+					
+					error = true;
+					
 				}
 				//checks for ingredients
 				if($('#Ingredients').val() == ""){
 					$('#ingredientsdiv').addClass("has-error")
 					$('#ingredienthelp').text("need ingredients")
-					$('#submithelp').text("There seems to be an error on the form.")
-					return false;
+					
+					error = true;
+				
 				}
 				//checks for steps
+				
 				if($('#Steps').val() == ""){
 					$('#stepsdiv').addClass("has-error")
-					$('#stephelp').text("need ingredients")
-					$('#submithelp').text("There seems to be an error on the form.")
-					return false;
+					$('#stephelp').text("need steps")
+					
+					error = true;
+					
 				}
 				//checks for image
 				if(str != "" && !(str.endsWith(".jpg") || str.endsWith(".png") || str.endsWith(".gif"))){
 					alert("success")
 					$('#imagediv').addClass("has-error")
 					$('#imagehelp').text("extention is missing. (.jpg, .png, or .gif needed)")
+					
+					error = true;
+					
+				}
+				if(error){ 
 					$('#submithelp').text("There seems to be an error on the form.")
 					return false;
 				}
