@@ -44,10 +44,14 @@
 	        </div>
 	      </form>
 
-	    <div>
+	    <div id="user_buttons">
+		    <form action="/user/sign-out" method="POST">
+					<input id="sign-out" class="btn btn-default" type="submit" value="Sign Out">
+		      </form>
 	    	<a href="/user/{{user_id}}">
 	    	 <img id="profile-img" class="profile-img-main" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
 	      </a>
+	      
 	    </div>
 	      
 	  </div>

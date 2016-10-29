@@ -34,18 +34,19 @@ a {
 
 }
 #color {
-	margin-top: 200px;
+	margin-top: 100px;
 	width: 600px;
-	height: 80px;
+	height: 450px;
 	line-height: 80px;	
 	position: fixed;
+    text-align: center;
 	margin-left: 350px;
 	border-radius: 10px;
 }
 #color{
-	background-color:  midnightblue;	
-	opacity: 0.5;
-	filter: alpha(opacity=50);
+	background-color:  #8989AF;	
+	/*opacity: 0.5;
+	filter: alpha(opacity=50);*/
 }
 #logo {
 	background-image : url(../assets/images/logo.jpg) no-repeat top left; 
@@ -221,4 +222,26 @@ a {
 
 #user_buttons {
     margin: 10px;
+}
+
+.recipe-img {
+	margin: auto auto;
+}
+
+.recipe-display {
+	background: gray;
+	height: 550px;
+	width: 30%;
+	margin: 1%;
+	display: inline-block;
+	text-align: center;
+}
+
+/*.recipe-display:nth-child(odd) {
+	background: midnightblue;
+	margin-top: 1%;
+}*/
+
+#welcome {
+	color: black;
 }

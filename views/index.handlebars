@@ -1,12 +1,15 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h1>Welcome to Recipe Book!</h1>
-		{{#each recipes_array}}
-			<a href="/recipe/{{dataValues.id}}"
-				<p>This is working {{dataValues.name}}</p>
-				<img src="{{dataValues.image}}">
-			</a>
-		{{/each}}
+		<h1 id="welcome">Welcome to Recipe Book!</h1>
+		<div id="recipes-container">
+			{{#each recipes_array}}
+				<div class="recipe-display">
+					<a href="/recipe/{{dataValues.id}}">{{dataValues.name}}</a>
+					<p>{{dataValues.description}}</p>
+					<img class="img-responsive recipe-img" src="{{dataValues.image}}" alt="{{dataValues.name}}">
+				</div>
+			{{/each}}
+		</div>
 	</div>
 </div>
