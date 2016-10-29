@@ -67,6 +67,7 @@ router.get('/:id',function(req, res){
 		}
 	}).then(function(recipe){
 		console.log("WAS IT HERE?",id);
+		var match = (req.session.user_id == recipe.dataValues.UserId)
 		models.Users.findOne({
 			where: {
 				id: recipe.dataValues.UserId
@@ -90,6 +91,7 @@ router.get('/:id',function(req, res){
 						}
 						
 						res.render('recipe', {
+							match:match,
 							user_id: req.session.user_id,
 							recipe2: recipe,
 							owner: user_recipe_owner
@@ -98,6 +100,7 @@ router.get('/:id',function(req, res){
 				}
 				else{
 					res.render('recipe', {
+						match:match,
 						user_id: 0,
 						recipe2: recipe,
 						owner: user_recipe_owner

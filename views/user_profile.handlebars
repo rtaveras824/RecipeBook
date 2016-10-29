@@ -10,9 +10,10 @@
 <!--************************************************************************-->
 <div class="container"></div>
 <div style="background-color: rgba(255, 255, 255, 0.5)">
-{{#if user_id_match}}
+
 <div id="services" class="container-fluid text-center">
   <h2>Have Fun and Cook</h2>
+  {{#if user_id_match}}
   <br>
   <div id="buttons" class="row slideanim">
     <div class="col-sm-4">
@@ -43,18 +44,20 @@
       <a id="favorite_recipes" data-action="favorite_recipes"><h4>Favorite Recipes</h4></a>
       <p>The recipes that you love right where they belong</p>
     </div>
-    {{/if}}
-  </div>
+   </div>
+{{/if}}
+  
   {{#unless user_id_match}}
+
   {{#if following}}
   	<div class="col-sm-4">
       <form id="unfollow_form" action="" method="POST">
       	<input type="submit" value="Unfollow">
      	<p>Unfollow them if you want to.</p>
       </form>
-      
     </div>
     {{/if}}
+
     {{#unless following}}
 
     <div class="col-sm-4">
