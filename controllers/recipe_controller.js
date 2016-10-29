@@ -55,19 +55,6 @@ router.post('/create',function(req, res){
 	});
 });
 
-// router.get('/:id', function(req, res){
-
-// 	var recipeId = req.params.id;
-// 	console.log("Id is", recipeId);
-// 	models.Recipe.findOne({
-// 		where:{
-// 			id:recipeId,
-// 		}
-// 	})
-// 	.then(function(recipe){
-// 		console.log("Recipe", recipe);
-// 	})	
-// })
 
 router.get('/:id',function(req, res){
 
@@ -92,7 +79,7 @@ router.get('/:id',function(req, res){
 					id: req.session.user_id
 				}
 			}).then(function(user) {
-				console.log("IS USER?", user);
+			
 				if(user != null){
 					user.getFavoriteRecipes().then(function(recipes) {
 						for(var i = 0; i < recipes.length; i++) {
@@ -101,12 +88,12 @@ router.get('/:id',function(req, res){
 								recipe.dataValues.favorited = true;
 							}
 						}
-						console.log(recipe);
-						// res.render('recipe', {
-						// 	user_id: req.session.user_id,
-						// 	recipe2: recipe,
-						// 	owner: user_recipe_owner
-						// })
+						
+						res.render('recipe', {
+							user_id: req.session.user_id,
+							recipe2: recipe,
+							owner: user_recipe_owner
+						})
 					})
 				}
 				else{
