@@ -2,17 +2,48 @@
 <h1>User Recipes</h1>
 
 {{#each recipes}}
-	<a href="/recipe/{{dataValues.id}}">
-		<p>{{ dataValues.name }}</p>
-	</a>
+	{{#if price}}
+		{{#if dataValues.paid}}
+			<a href="/recipe/{{dataValues.id}}">
+				<p>{{ dataValues.name }}</p>
+			</a>
+		{{/if}}
+		{{#unless dataValues.paid}}
+			<p>{{ dataValues.name }}</p>
+		{{/unless}}
+	{{/if}}
+	{{#unless price}}
+		<a href="/recipe/{{dataValues.id}}">
+			<p>{{ dataValues.name }}</p>
+		</a>
+	{{/unless}}
 	{{#if dataValues.private}}
 		<p>Private</p>
 	{{/if}}
 	{{#unless dataValues.private}}
 		<p>Public</p>
 	{{/unless}}
-	{{#if dataValues.paid}}
-		<p>Paid</p>
+	{{#if dataValues.price}}
+		{{#unless dataValues.paid}}
+			<form action="/payment" method="GET">
+				<input type="hidden" name="recipe_id" value="{{dataValues.id}}" />
+				<input class="purchase" type="submit" value="$ {{dataValues.price}}" />
+			</form>
+		{{/unless}}
+		{{#if dataValues.paid}}
+			<p>Paid</p>
+		{{/if}}
 	{{/if}}
 {{/each}}
 </div>
+
+<script type="text/javascript">
+	{{#if dataValues.price}}
+		{{#unless dataValues.paid}}
+			var purchaseButton = document.querySelector('.purchase');
+			console.log('hey', purchaseButton);
+			var purchaseButtonPrice = purchaseButton.value;
+			purchaseButton.value = purchaseButtonPrice.toFixed(2);
+		{{/unless}}
+	{{/if}}
+</script>

@@ -19,7 +19,7 @@
 			{{#if price}}
 				<form action="/payment" method="GET">
 					<input type="hidden" name="recipe_id" value="{{id}}" />
-					<input type="submit" value="{{price}}" />
+					<input type="submit" value="$ {{price}}" />
 				</form>
 			{{/if}}
 		{{/unless}}

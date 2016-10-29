@@ -34,7 +34,7 @@ router.get('/client_token', function(req, res) {
 	});
 });
 
-router.post('/recipe/checkout', function(req, res) {
+router.post('/checkout', function(req, res) {
 	// var nonceFromTheClient = req.body.payment_method_nonce;
 	var id = req.session.user_id;
 
