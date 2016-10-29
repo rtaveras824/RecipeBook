@@ -20,15 +20,12 @@ h3 {
 a {
 	text-decoration: none !important;
 }
-.bgimgmain {
-	
-}
+
 #mainPage {
-	height: 100px;
-    background: -webkit-linear-gradient(top, rgba(215,30,10,0), rgba(106, 47, 106,1)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom, rgba(215,30,10,0), rgba(106, 47, 106,1));  /*For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom, rgba(215,30,10,0), rgba(106, 47, 106,1));  /*For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom, rgba(215,30,10,0), rgba(106, 47, 106,1)); /*Standard syntax (must be last)*/
+	background-image: url(../images/perfect3.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	
 }
 .logfrom {
 	padding-left: 100px;
@@ -177,11 +174,11 @@ a {
 	height: -100px;
 }
 .helloUser {
-	 font-family: "Great Vibes", cursive; 
+	 font-family: sans-serif;, cursive; 
 	 
 }
 .container-profile { /*this styles the profile info*/
-	color: white;
+	color: darkslategray;
 	background-color: darksalmon ;
 	/*margin-top: 50px;*/
 	/*width: 33.33%;*/
