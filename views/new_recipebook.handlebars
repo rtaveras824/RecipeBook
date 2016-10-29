@@ -1,32 +1,53 @@
 <h1>Create Recipe Book</h1>
 
 <form action = "/recipebook/create" method="POST">
-	
-	<label for="recipebook_name">Recipe Book Name:</label>
-	<input id="recipebook_name" type="text" name="name"/>
+	<div class="card card-container">
+		<div id="bookdiv" class="form-group">
+			<label for="recipebook_name">Recipe Book Name:</label>
+			<input class="form-control" id="recipebook_name" type="text" name="name"/>
+			<p id="bookhelp" class="help-block"></p>
+		</div>
 
-	<label>Public or Private</label>
-	<select id="private" name="private">
-	  <option value="0">Public</option>
-	  <option value="1">Private</option>
-	</select>
+		<div class="form-group">
+			<label>Private</label>
+			<select class="form-control" id="private" name="private">
+			  <option value="0">No</option>
+			  <option value="1">Yes</option>
+			</select>
+		</div>
 
-	<input id="price" type="number" min="0.00" step="0.01" readonly=true name="price" value="0.00"/>
+		<div class="form-group">
+		<label>Price</label>
+		<input class="form-control" id="price" type="number" min="0.00" step="0.01" name="price" value="0.00"/>
+		</div>
 
-	<input type="submit" value="Submit" />
+		<input id="submit" type="submit" value="Submit" />
+	</div>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.js" integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA=" crossorigin="anonymous"></script>
 <script>
 	$('#private').on("change", function(){
 
-		if ($('#private').val() == false){
+		if ($('#private').val() == true){
 				$('#price').val('0.00').attr('readonly',true)
 		}
 		else{
 				$('#price').val('').attr('readonly',false)
 		}
 
+	})
+
+	$('#submit').on('click', function(){
+		var error = false;
+
+		if($('#recipebook_name').val() == ""){
+			$('#bookdiv').addClass("has-error")
+			$('#bookhelp').text("need valid name")
+			error = true;
+		}
+
+		if(error) return false;
 	})
 	
 </script>
