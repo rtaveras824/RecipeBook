@@ -55,26 +55,32 @@ router.post('/create',function(req, res){
 	});
 });
 router.get('/:id',function(req, res){
+
 	var id = req.params.id;
+	console.log("HOW ABOUT HERE",id);
 	models.Recipe.findOne({
 		where: {
 			id: id
 		}
 	}).then(function(recipe){
+		console.log("WAS IT HERE?",id);
 		models.Users.findOne({
 			where: {
 				id: recipe.dataValues.UserId
 			}
-		}).then(function(user_recipe_owner) {
+		})
+	.then(function(user_recipe_owner) {
 			console.log('This is user_recipe_owner', user_recipe_owner);
 			models.Users.findOne({
 				where: {
 					id: req.session.user_id
 				}
 			}).then(function(user) {
+				
 				user.getFavoriteRecipes().then(function(recipes) {
 					for(var i = 0; i < recipes.length; i++) {
 						if(recipes[i].dataValues.id == id) {
+							console.log("OR WAS IT HERE?",id);
 							recipe.dataValues.favorited = true;
 						}
 					}
