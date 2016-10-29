@@ -8,6 +8,9 @@ router.get('/', function (req, res){
 	var button = '';
 	if (req.session.user_id) {
 		models.Recipe.findAll({
+			where: {
+				price: 0.00
+			},
 			attributes: ['id', 'name', 'description', 'image'],
 			limit: 10
 		}).then(function(recipes){

@@ -1,5 +1,5 @@
 <div class="container row "> 
-<div class=" col-md-3 container-profile  helloUser container-fluid">
+<div class=" col-lg-* container-profile  helloUser container-fluid">
 <!-- <h1>User Profile</h1> -->
 <h1>User! {{ user.dataValues.username }}</h1> <br>
 <h3>About {{user.dataValues.username }}:  {{ user.dataValues.description }}</h3>
@@ -7,50 +7,85 @@
 </div>
 <div class=" container col-md-3 "><img src="../assets/images/cooking1.jpeg" style="width: 125px; height: 125px; -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); margin-left: -39px; margin-top: -40px; position: absolute;"> </div>
-
-<div id="buttons" class=" col-md-3 profileButton container btn-group">
-
-{{#if user_id_match}}
-	<ul style="list-style-type:none" class="theButtons">
-		<li><button id="followers" data-action="followers" class="btn btn-danger">Followers</button>
-		</li>
-		<li><button id="edit_profile" data-action="edit_profile" class="btn btn-danger">Edit Profile</button>
- 		</li>
- 		<li><button id="add_recipe" data-action="add_recipe" class="btn btn-danger">Add Recipe</button>
-		</li>
-		<li><button id="add_recipebook" data-action="add_recipebook" class="btn btn-danger">Add Recipe Book</button>
-		</li>
-		<li><button id="paid_recipes" data-action="paid_recipes" class="btn btn-danger">Paid Recipes</button>
-		</li>
-		<li><button id="favorite_recipes" data-action="favorite_recipes" class="btn btn-danger">Favorite Recipes</button>
-		</li>
-	
-{{/if}}
-
-{{#unless user_id_match}}
-	{{#if following}}
-		<form id="unfollow_form" action="" method="POST">
-			<button id="follow" data-action="follow" class="btn btn-danger">Unfollow This User</button>
-		</form>
-
-	{{/if}}
-	{{#unless following}}
-		<form id="follow_form" action="" method="POST">
-			<button id="follow" data-action="follow" class="btn btn-danger">Follow This User</button>
-		</form>
-	{{/unless}}
-{{/unless}}
-
-
-	<li><button id="recipes" data-action="recipes" class="btn btn-danger">Recipes</button>
-	</li>
-	<li><button id="recipes_for_sale" data-action="recipes_for_sale" class="btn btn-danger">Recipes For Sale</button>
-	</li>
-	<li><button id="recipebooks" data-action="recipebook" class="btn btn-danger">RecipeBooks</button>
-	</li>
-	</ul>
 </div>
-</div> <!--end of row class -->
+<!--************************************************************************-->
+{{#if user_id_match}}
+<div id="services" class="container-fluid text-center">
+  <h2>Have Fun and Cook</h2>
+  <h4>What we offer</h4>
+  <br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span  ></span>
+      <button id="followers" data-action="followers"><h4>Followers</h4></button>
+      <p>Check how is following you.</p>
+    </div>
+    <div class="col-sm-4">
+      <span id="edit_profile" data-action="edit_profile"></span>
+      <h4>Edit Profile</h4>
+      <p>You can make all the changes that you want!.</p>
+    </div>
+    <div class="col-sm-4">
+      <span id="add_recipe" data-action="add_recipe"></span>
+      <h4>Add Recipe</h4>
+      <p>You have the tools to right down your recipes.</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span id="add_recipebook" data-action="add_recipebook"></span>
+      <h4>Add Recipe Book</h4>
+      <p>All of your family cooking history in one click</p>
+    </div>
+    <div class="col-sm-4">
+      <span id="paid_recipes" data-action="paid_recipes"></span>
+      <h4>Paid Recipes</h4>
+      <p>Check the recipies you have paid for.</p>
+    </div>
+    <div class="col-sm-4">
+      <span id="favorite_recipes" data-action="favorite_recipes"></span>
+      <h4 style="color:#303030;">Favorite Recipes</h4>
+      <p>The recipes that you love right where they belong</p>
+    </div>
+    {{/if}}
+  </div>
+  {{#unless user_id_match}}
+  {{#if following}}
+  	<div class="col-sm-4">
+      <span id="unfollow_form" action="" method="POST"></span>
+      <h4>Unfollow</h4>
+      <p>Unfollow them if you want to.</p>
+    </div>
+    {{/if}}
+    {{#unless following}}
+
+    <div class="col-sm-4">
+      <span id="follow_form" action="" method="POST"></span>
+      <h4>Follow</h4>
+      <p>foollow them if you want to.</p>
+    </div>
+    {{/unless}}
+    {{/unless}}
+
+    <div class="col-sm-4">
+      <span id="recipes" data-action="recipes"></span>
+      <h4>Recipes</h4>
+      <p>Check all recipes.</p>
+    </div>
+
+    <div class="col-sm-4">
+      <span id="recipebooks" data-action="recipebook"></span>
+      <h4>RecipeBooks</h4>
+      <p>Check all recipes Books.</p>
+    </div>
+
+</div>
+
+
+<!--************************************************************************-->
+
+
 
 <script type="text/javascript">
 	var currentUrl = window.location.href;
