@@ -2,7 +2,7 @@
 <h1>{{ recipe2.dataValues.name }}</h1>
 	<p>Author: <a href="/user/{{owner.dataValues.id}}">{{ owner.dataValues.username }}</a></p>
 	<p>{{ recipe2.dataValues.description }}</p>
-	<img {{bindAttr src="recipe2.dataValues.image"}} alt="image">
+	<img src="{{ recipe2.dataValues.image }}" alt="image">
 	<p id="ingredients">{{ recipe2.dataValues.ingredients }}</p>
 	<p id="steps">{{ recipe2.dataValues.steps }}</p>
 	{{#unless match}}

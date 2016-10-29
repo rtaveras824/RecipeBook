@@ -81,7 +81,6 @@ router.get('/:id', function(req, res) {
 	var isFollowing;
 
 	models.Users.findOne({
-		attributes: ['id', 'username', 'email', 'description', 'image'],
 		where: {
 			id: id
 		}
