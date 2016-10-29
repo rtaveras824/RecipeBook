@@ -5,7 +5,7 @@
 	<a href="/recipe/{{dataValues.id}}">
 		<p>{{ dataValues.name }}</p>
 	</a>
-	
+
 	{{#if dataValues.private}}
 		<p>Private</p>
 	{{/if}}
@@ -18,4 +18,9 @@
 		<p>Paid</p>
 	{{/if}}
 {{/each}}
+{{#if usermatch}}
+		<div class="text-center">
+		<button><a href="/recipebook/create_new_recipebook">Add new Recipe</a></button>
+		</div>
+	{{/if}}
 </div>

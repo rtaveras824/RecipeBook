@@ -191,6 +191,7 @@ router.put('/:id/update', function(req, res) {
 
 router.get('/:id/recipes', function(req ,res) {
 	var id = req.params.id;
+	var match = (id == req.session.user_id)
 	var private;
 	if (req.session.user_id != id) {
 		private = false;
@@ -215,6 +216,7 @@ router.get('/:id/recipes', function(req ,res) {
 	}).then(function(recipes) {
 		console.log(recipes);
 		res.render('user_recipes', { 
+			usermatch: match,
 			user_id: req.session.user_id,
 			recipes: recipes 
 		});
