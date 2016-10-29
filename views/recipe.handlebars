@@ -2,13 +2,15 @@
 <h1>{{ recipe2.dataValues.name }}</h1>
 	<p>Author: <a href="/user/{{owner.dataValues.id}}">{{ owner.dataValues.username }}</a></p>
 	<p>{{ recipe2.dataValues.description }}</p>
-	<img src="{{ recipe2.dataValues.image }}" />
+	<img {{bindAttr src="recipe2.dataValues.image"}} alt="image">
 	<p id="ingredients">{{ recipe2.dataValues.ingredients }}</p>
 	<p id="steps">{{ recipe2.dataValues.steps }}</p>
-	{{#unless recipe2.dataValues.favorited}}
-		<form action="/recipe/{{recipe2.dataValues.id}}/favorite" method="POST">
-			<input type="submit" value="favorite">
-		</form>
+	{{#unless match}}
+		{{#unless recipe2.dataValues.favorited}}
+			<form action="/recipe/{{recipe2.dataValues.id}}/favorite" method="POST">
+				<input type="submit" value="Favorite">
+			</form>
+		{{/unless}}
 	{{/unless}}
 </div">
 <script type="text/javascript">

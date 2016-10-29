@@ -17,12 +17,15 @@
 			<p>{{ dataValues.name }}</p>
 		</a>
 	{{/unless}}
+
 	{{#if dataValues.private}}
 		<p>Private</p>
 	{{/if}}
+
 	{{#unless dataValues.private}}
 		<p>Public</p>
 	{{/unless}}
+
 	{{#if dataValues.price}}
 		{{#unless dataValues.paid}}
 			<form action="/payment" method="GET">
@@ -47,3 +50,4 @@
 		{{/unless}}
 	{{/if}}
 </script>
+

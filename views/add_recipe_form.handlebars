@@ -5,27 +5,30 @@
 			<form action = "/recipe/create" method = "POST"> <!--Name of the recipe -->
 		<div class="card">
 
-				<div class="form-group">
+				<div id="namediv" class="form-group">
 					<label>Name your recipe</label>
-					<input class="form-control" type = "text" name = "name"> 
-
+					<input id="recipename" class="form-control" type = "text" name = "name"> 
+					<p id="namehelp" class="help-block"></p>
 				</div> 
 
 				<div class="form-group"> <!--Description of recipe-->
 					<label>Description:</label>
 					<textarea class="form-control" type = "text" name = "description"></textarea>
 				</div>
-				<div class="form-group"> <!--Post your URL Image-->
+				<div id="imagediv" class="form-group"> <!--Post your URL Image-->
 					<label>Image:</label>
-					<input class="form-control" type = "text" name = "image">
+					<input id="image" class="form-control" type = "text" name = "image">
+					<p id="imagehelp" class="help-block"></p>
 				</div>
-    			<div class="form-group">  <!--Ingredients-->
+    			<div id="ingredientsdiv" class="form-group">  <!--Ingredients-->
      			  	<label for="comment">Ingredients:</label>
      			  	<textarea class="form-control" rows="5" id="Ingredients" name="ingredients"></textarea>
+     			  	<p id="ingredienthelp" class="help-block"></p>
     			</div>
-    			<div class="form-group"> <!--Steps for the recipe-->
+    			<div  id="stepsdiv" class="form-group"> <!--Steps for the recipe-->
      			 	<label for="comment">Steps:</label>
      			 	<textarea class="form-control" rows="5" id="Steps" name="steps"></textarea>
+     			 	<p id="stephelp" class="help-block"></p>
     			</div>
   				<div class="form-group"> <!--Option to see if Recipe is Private or Public-->
   					<label>Private</label>
@@ -38,8 +41,8 @@
 					<label>Price</label>
 					<input id="price" class="form-control" type="number" min="0.00" step="0.01" name="price" value="0.00"/>
 				</div>
-
-				<button class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
+				<p id="submithelp" class="help-block"></p>
+				<button id="submit" class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
 			</div> <!--End of div card -->
 			</form> <!--End of form -->
 		<div> <!--End of Container -->
@@ -56,7 +59,59 @@
 				}
 
 			})
-			
+			//error handeler
+			$('#submit').on('click', function(){
+				var str = $('#image').val()
+				var error = false;
+				$('#imagediv').removeClass("has-error")
+				$('#namediv').removeClass("has-error")
+				$('#ingredientsdiv').removeClass("has-error")
+				$('#stepsdiv').removeClass("has-error")
+				$('#imagehelp').text("")
+				$('#submithelp').text("")
+				$('#ingredienthelp').text("")
+				$('#stephelp').text("")
+
+				//check if name is there
+				if($("#recipename").val() == ""){
+					$('#namediv').addClass("has-error")
+					$('#namehelp').text("need valid name")
+					
+					error = true;
+					
+				}
+				//checks for ingredients
+				if($('#Ingredients').val() == ""){
+					$('#ingredientsdiv').addClass("has-error")
+					$('#ingredienthelp').text("need ingredients")
+					
+					error = true;
+				
+				}
+				//checks for steps
+				
+				if($('#Steps').val() == ""){
+					$('#stepsdiv').addClass("has-error")
+					$('#stephelp').text("need steps")
+					
+					error = true;
+					
+				}
+				//checks for image
+				if(str != "" && !(str.endsWith(".jpg") || str.endsWith(".png") || str.endsWith(".gif"))){
+					alert("success")
+					$('#imagediv').addClass("has-error")
+					$('#imagehelp').text("extention is missing. (.jpg, .png, or .gif needed)")
+					
+					error = true;
+					
+				}
+				if(error){ 
+					$('#submithelp').text("There seems to be an error on the form.")
+					return false;
+				}
+				
+			})
 		</script>
 
 
