@@ -125,9 +125,7 @@ router.get('/:id/followers', function(req ,res) {
 			id: id
 		}
 	}).then(function(profile_user) {
-		profile_user.getFollower({
-			attributes: ['username']
-		}).then(function(followers) {
+		profile_user.getFollower().then(function(followers) {
 			res.render('user_followers', { 
 				user_id: req.session.user_id,
 				followers: followers 
