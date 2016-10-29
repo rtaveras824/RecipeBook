@@ -93,24 +93,31 @@ clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); margin-left: -39px; marg
 	var currentUrl = window.location.href;
 	console.log(currentUrl);
 
-	var follow_form = document.getElementById('follow_form');
-	var unfollow_form = document.getElementById('unfollow_form');
-
-	if(follow_form !== null) {
-		follow_form.action += '/follow';
-	} else if (unfollow_form !== null) {
-		unfollow_form.action += '/unfollow';
-	}
 	
-	document.getElementById('followers').href = currentUrl + '/followers';
-	document.getElementById('edit_profile').href = currentUrl + '/edit-profile';
 	document.getElementById('recipes').href = currentUrl + '/recipes';
 	document.getElementById('recipes_for_sale').href = currentUrl + '/recipes-for-sale';
-	document.getElementById('add_recipe').href = window.location.origin + '/recipe/add';
-	document.getElementById('add_recipebook').href = '/recipebook/create_new_recipebook';
-	document.getElementById('paid_recipes').href = currentUrl + '/paid-recipes';
-	document.getElementById('favorite_recipes').href = currentUrl + '/favorites';
 	document.getElementById('recipebooks').href = currentUrl + '/recipebook';
+	
+	{{#if user_id_match}}
+		document.getElementById('followers').href = currentUrl + '/followers';
+		document.getElementById('edit_profile').href = currentUrl + '/edit-profile';
+		document.getElementById('add_recipe').href = window.location.origin + '/recipe/add';
+		document.getElementById('add_recipebook').href = '/recipebook/create_new_recipebook';
+		document.getElementById('paid_recipes').href = currentUrl + '/paid-recipes';
+		document.getElementById('favorite_recipes').href = currentUrl + '/favorites';
+	{{/if}}
+
+	{{#unless user_id_match}}
+		var follow_form = document.getElementById('follow_form');
+		var unfollow_form = document.getElementById('unfollow_form');
+
+		if(follow_form !== null) {
+			follow_form.action += '/follow';
+		} else if (unfollow_form !== null) {
+			unfollow_form.action += '/unfollow';
+		}
+	{{/unless}}
+	
 
 	// var buttons = document.getElementById('buttons');
 	// buttons.addEventListener('click', function(event) {
